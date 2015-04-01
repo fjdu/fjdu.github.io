@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A funny thing on the python destructor"
+title:  "On the python destructor"
 date:   2015-03-31 Tue 17:32:16
 categories: coding
 ---
@@ -88,6 +88,10 @@ The reason is:
 refers to `test.tag` (which is not a typo).  But in general, the order of
 calling the destructors does not have a simple pattern.
 
+{% include twitter_plug.html %}
+
+<!---
 [jekyll]:      http://jekyllrb.com
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-help]: https://github.com/jekyll/jekyll-help
+-->
