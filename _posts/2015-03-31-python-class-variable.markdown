@@ -18,11 +18,12 @@ class test:
 
     def __del__(self):
         print 'In __del__:', 'deleting ', self.name
+        print '\t', id(test.tag)
         test.tag = '0000'
         print '\t', id(test.tag)
 
 a = test('a')
-print id(a.tag)
+print 'a: ', id(a.tag), id(test.tag)
 
 class test:
     tag = '2222'
@@ -32,11 +33,13 @@ class test:
 
     def __del__(self):
         print 'In __del__:', 'deleting ', self.name
-        print test.tag
         print '\t', id(test.tag)
+        test.tag = '3333'
+        print '\t', id(test.tag)
+        print test.tag
 
 b = test('b')
-print id(b.tag)
+print 'b: ', id(b.tag), id(test.tag)
 
 class test1:
     tag = '3333'
@@ -51,20 +54,21 @@ class test1:
 
 c = test1('c')
 
-print id(c.tag)
+print 'c: ', id(c.tag), id(test1.tag)
 
 # Result:
-
-# 4317690064
-# 4317690304
-# 4317690448
+# a:  4517161072 4517161072
+# b:  4517161312 4517161312
+# c:  4517161456 4517161456
 # In __del__: deleting  a
-# 	4317690256
+# 	4517161312
+# 	4517161264
 # In __del__: deleting  c
 # 0000
 # In __del__: deleting  b
-# 0000
-# 	4317690256
+# 	4517161264
+# 	4517161456
+# 3333
 
 {% endhighlight %}
 
@@ -83,6 +87,9 @@ The reason is:
   actually referring to the '`test`' class of `b` (they have the same `id`).
   That's why when `b` is destructed, the `test.tag` has a value pf '0000'
   rather than '2222'.
+
+Note that when `b` is being destructed, the `test.tag` still exists, which
+means the class can be destructed later than the object itself.
 
 `b` is destructed later than `c`, because in the definition of `test1` it
 refers to `test.tag` (which is not a typo).  But in general, the order of
