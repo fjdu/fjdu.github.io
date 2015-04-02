@@ -1,1 +1,1 @@
-[FJDU's personal blog](fjdu.github.io)
+[FJDU's personal blog](http://fjdu.github.io/)
