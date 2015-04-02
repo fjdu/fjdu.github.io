@@ -88,8 +88,6 @@ The reason is:
 refers to `test.tag` (which is not a typo).  But in general, the order of
 calling the destructors does not have a simple pattern.
 
-{% include twitter_plug.html %}
-
 <!---
 [jekyll]:      http://jekyllrb.com
 [jekyll-gh]:   https://github.com/jekyll/jekyll

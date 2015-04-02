@@ -11,7 +11,6 @@ categories: astrophysics, planet
 
 References:
 
-1. http://arxiv.org/pdf/1412.1137v1.pdf
-1. http://en.wikipedia.org/wiki/Photophoresis
+1. [Cuello et al. 2014](http://arxiv.org/pdf/1412.1137v1.pdf)
+1. [Wikipedia](http://en.wikipedia.org/wiki/Photophoresis)
 
-{% include twitter_plug.html %}
