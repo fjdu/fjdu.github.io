@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "Accumulative sum of dice numbers"
+date:   2015-04-03 Fri 11:00:40
+categories: math
+---
+
+<div>
+  Question: throw a dice and add the number until the sum reaches or becomes
+  larger than a certain given number \(N\).  What is the probability that the
+  number \(N\) be reached, rather than over-shoot?
+  <p>
+  We need to show that, as \(N\) gets large, the probability converges to a
+  constant number.  Then we can calculate this number however we want.
+  </p>
+  <p>
+  I think the fact that the probability of reaching a number \(N\) converges to
+  a constant that does not depend on the "property" (odd or even, prime or
+  nonprime, etc.) of \(N\) is nontrivial.
+  This could be related to the basic assumption of statistical physics.
+  Ergodicity?
+  </p>
+</div>
