@@ -64,3 +64,11 @@ The two are exactly the same.  Hence for such a universe, photons emitted by
 galaxies moving away from as with speed higher than the light speed will not
 reach us no matter how long we wait.
 </div>
+
+<div>
+See also:
+<ul>
+<li> Stuckey 1991: http://users.etown.edu/s/stuckeym/AJP1992a.pdf </li>
+<li> Davis and Lineweaver 2001: http://arxiv.org/pdf/astro-ph/0011070v2.pdf </li>
+</ul>
+</div>
