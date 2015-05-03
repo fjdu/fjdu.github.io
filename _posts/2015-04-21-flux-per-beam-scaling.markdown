@@ -6,7 +6,7 @@ categories: astronomy
 ---
 
 \\[
-  F \equiv \int_\text{beam} S(\vec{n}) P(\vec{n}) d\Omega. %_
+  F \equiv \int_\text{beam} S(\vec{n}) P(\vec{n}) d\Omega.
 \\]
 
 Let
