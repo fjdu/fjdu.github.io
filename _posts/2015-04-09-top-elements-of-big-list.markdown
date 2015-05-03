@@ -29,5 +29,4 @@ categories: algorithm
   Actually, when \(M = T\), the number of computation is the lowest, and is
   linear in \(N\), but then we have to consider the penalty from frequent disk
   IO.
-
 </div>
