@@ -1,30 +1,32 @@
 ---
 layout: post
-title:  "Add qrcode in this website"
+title:  "Add qrcode to this website"
 date:   2015-09-05 Sat 13:06:33
 categories: website
 ---
 
-1. Create a directory called "js"; it seems that the directory name should
+- Create a directory called "js"; it seems that the directory name should
    not start with an underscore (does jekyll treat directory names starting
    with an underscore in a special way?  need to be confirmed).
-2. Download the following three files (from https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js and https://github.com/jeromeetienne/jquery-qrcode) to this directory:
+- Download the following three files (from https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js and https://github.com/jeromeetienne/jquery-qrcode) to this directory:
     - jquery.min.js
     - jquery.qrcode.js
     - qrcode.js
-3. Include the following lines in _includes/head.html:
-    {% highlight javascript %}
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.qrcode.js"></script>
-    <script type="text/javascript" src="/js/qrcode.js"></script>
-    {% endhighlight %}
-4. Include the following lines in _includes/footer.html:
-    {% highlight javascript %}
-    <div id="qrcode_footer"></div>
-    <script type="text/javascript">
-        jQuery('#qrcode_footer').qrcode({
-            render  : "table",
-            text    : "http://jetienne.com"
-        }); 
-    </script>
-    {% endhighlight %}
+- Include the following lines in _includes/head.html:
+{% highlight javascript %}
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.qrcode.js"></script>
+<script type="text/javascript" src="/js/qrcode.js"></script>
+{% endhighlight %}
+- Include the following lines in _includes/footer.html:
+{% highlight javascript %}
+<div id="qrcode_footer"></div>
+<script type="text/javascript">
+    jQuery('#qrcode_footer').qrcode({
+        render  : "table",
+        text    : "http://fjdu.github.io{{ page.url }}"
+    }); 
+</script>
+{% endhighlight %}
+
+I also found a bug in jekyll: highlight within list will break the list numbering.
