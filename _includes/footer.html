@@ -48,4 +48,12 @@
     <span class='st_pinterest' displayText='Pinterest'></span>
     <span class='st_email' displayText='Email'></span>
   </div>
+
+<div id="qrcode_footer"></div>
+<script type="text/javascript">
+	jQuery('#qrcode_footer').qrcode({
+		render	: "table",
+		text	: "{{ site.url }}{{ page.url }}"
+	});	
+</script>
 </footer>
