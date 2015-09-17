@@ -25,3 +25,8 @@ By default `doNotHash` is set to `false`, this will make the copy-and-paste
 function of the page misbehave: all the lines will be copied into a single line
 (if only copying part of the page), appended with a "See more at url" message,
 which is not needed (and very annoying in any imaginable context).
+
+*What I learn from this*
+- Side effect is bad bad bad...
+- Read the damn documentation.
+- The documentation should be as short as possible, but not shorter.
