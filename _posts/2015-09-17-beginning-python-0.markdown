@@ -79,12 +79,19 @@ _ab_2 = 'asda'
 a = 1; b = 2  # 分号只在把两个语句写在同一行的时候需要  
 if a == b:  
     print 'Do something'  
+elif a > b:
+    print 'Do nothing'
+else:
+    print 'Nothing to do'
 {% endhighlight %}
 <li> 循环结构 </li>
 {% highlight python linenos=table %}
 a = [1,2,3]
 for i in a:
     print i*i
+
+for i in 'fjsjk2jri3':
+    print i
 
 i = 10
 while i > 0:
@@ -95,6 +102,8 @@ while i > 0:
 {% highlight python linenos=table %}
 def f(x):
     return x * x * x
+def g(x, y, z):
+    return x * y * z
 {% endhighlight %}
 </ul>
 </li>
@@ -165,6 +174,8 @@ del a
 <li> re </li>
 <li> itertools </li>
 <li> functools </li>
+<li> multiprocessing </li>
+<li> subprocess </li>
 <li> random </li>
 </ol>
 </li>
@@ -179,8 +190,12 @@ del a
 </li>
 <li> 高级语法结构
 <ol>
+<li> map, reduce, filter </li>
 <li> decorator </li>
 <li> metaclass </li>
+<li> 如何自己写library </li>
+<li> 如何用其它语言(C, C++, Fortran)来扩展Python </li>
+<li> 用Python处理Python自身的语法元素 </li>
 </ol>
 </li>
 </ol>
