@@ -127,20 +127,33 @@ print s
 {% highlight python linenos=table %}
 []
 [1,2,3]
-[1, 'aasd', 3.14]
+a = [1, 'aasd', 3.14]
+print len(a)
+print a
+a.append('QQQ')
+print a
+a[0] = 233
+print a
+for i in a:
+    print i
+for i in xrange(len(a)):
+    print a[i]
 {% endhighlight %}
 <li> Tuple </li>
 {% highlight python linenos=table %}
 ()
 (1,2,3)
-(1, 'aasd', 3.14)
+a = (1, 'aasd', 3.14)
+print a[0], a[1]
+a[0] = 3  # Error!
 {% endhighlight %}
 <li> Dictionary </li>
 {% highlight python linenos=table %}
 {}
 {1: 'a', 2: 'b'}
 {(1,2): 'abab', (3,4): '2e22r', 5: '2342fe', 'aa': [1, 2, 3.5]}
-{'email': 'xxyy@gmail.com', 'address': 'AA, MI'}
+d = {'email': 'xxyy@gmail.com', 'address': 'AA, MI'}
+print d['email'], d['address']
 {% endhighlight %}
 <li> Set </li>
 {% highlight python linenos=table %}
