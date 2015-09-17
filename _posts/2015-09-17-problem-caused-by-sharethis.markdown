@@ -27,6 +27,7 @@ function of the page misbehave: all the lines will be copied into a single line
 which is not needed (and very annoying in any imaginable context).
 
 *What I learn from this*
+
     - Side effect is bad bad bad...
     - Read the damn documentation.
     - The documentation should be as short as possible, but not shorter.
