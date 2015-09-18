@@ -241,3 +241,34 @@ del a
 </ol>
 </li>
 </ol>
+
+# References
+
+1. [The official tutorial](https://docs.python.org/3/tutorial/)
+1. [A Byte of Python](http://www.swaroopch.com/notes/python/)
+1. [Learn Python the Hard Way](http://learnpythonthehardway.org/book/)
+1. [Dive Into Python](http://www.diveinto.org/python3/)
+1. [Python Practice Book](http://anandology.com/python-practice-book/index.html)
+1. [Five mini programming projects for the Python beginner](https://medium.com/learning-journalism-tech/five-mini-programming-projects-for-the-python-beginner-21492f6ce0f3)
+1. [Think Python: How to Think Like a Computer Scientist](http://greenteapress.com/thinkpython/html/index.html)
+1. [Learning Python for non-developers](http://www.mattmakai.com/learning-python-for-non-developers.html)
+1. [Python教程](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)
+1. [Python爬虫](http://www.zhihu.com/question/20899988/answer/24923424)
+1. [Python Style Guide](https://www.python.org/dev/peps/pep-0008/)
+1. [Python Topics Tree](http://www.visualizationportfolio.com/visualization/python-topics-tree/)
+1. Lutz, Learning Python
+1. Lutz, Programming Python
+1. Chun, Core Python Programming
+1. Chun, Core Python Applications Programming
+1. Goodrich, Data structures and algorithms in Python
+1. 陈儒, Python源码剖析
+1. 雨痕, Python学习笔记
+1. Bird, Natural Language Processing with Python
+
+*Other related material*
+
+1. [The Unix Philosophy](http://www.catb.org/~esr/writings/taoup/html/ch01s06.html#id2878742)
+1. [How to Build a Blog](https://www.udacity.com/course/web-development--cs253)
+1. [TCP-IP协议](http://www.code123.cc/category/tcp-ip)
+1. [互联网协议入门](http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html)
+1. [HTTP协议](http://www.cnblogs.com/TankXiao/archive/2012/09/26/2695955.html)
