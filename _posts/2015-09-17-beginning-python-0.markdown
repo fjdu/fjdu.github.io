@@ -69,9 +69,37 @@ print {'email': 'xxyy@gmail.com', 'address': 'AA, MI'}  # Dictionary
 下划线或字母开头，后面跟任意多个下划线、字母、或数字
 {% highlight python linenos=table %}
 a = 1
+print id(a), id(1)
+
 srwe = 1.23
+b = srwe
+srwe_ = 1.23
+print id(srwe), id(srwe_), id(b)
+
+srwe = 1.2E33
+srwe_ = 1.2E33
+print id(srwe), id(srwe_), srwe == srwe_
+
 _a = 1
 _ab_2 = 'asda'
+
+print id(1.23)
+a = 1.23
+print id(a), id(1.23)
+b = a
+print id(b)
+b = 1.23
+print id(b)
+print id(1.23)
+
+print id(1)
+a = 1
+print id(a), id(1)
+b = a
+print id(b)
+b = 1
+print id(b)
+print id(1)
 {% endhighlight %}
 <li> Python使用基于缩进(也就是对齐)的语法结构; 用空格，不要用Tab! </li>
 <li> 条件判断 </li>
@@ -206,6 +234,7 @@ del a
 <li> map, reduce, filter </li>
 <li> decorator </li>
 <li> metaclass </li>
+<li> 垃圾回收 </li>
 <li> 如何自己写library </li>
 <li> 如何用其它语言(C, C++, Fortran)来扩展Python </li>
 <li> 用Python处理Python自身的语法元素 </li>
