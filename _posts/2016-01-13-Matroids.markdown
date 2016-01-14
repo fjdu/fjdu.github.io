@@ -12,7 +12,7 @@ examples in the book.
 
 1. Let `A` and `B` each be a collection of linearly independent row vectors of
    a matrix, and `|A| < |B|`.  Then it is possible to choose one row vector `x`
-   from `B - A` such that `A + x` is still linearly independent.
+   from `B - A` such that `A ∪ {x}` is still linearly independent.
 
    **Proof**:
    
@@ -54,7 +54,7 @@ examples in the book.
    (see Proof-A).
    
    Note that if they don't form a path, say, for example, if the `n` edges are
-   disconnected from each other, then you cannot do any "linear combination".
+   disconnected from each other, you cannot do any "linear combination".
 
    Now we see an *exact mapping* between this theorem and the first one, so we
    can use exactly the same argument.
@@ -63,7 +63,11 @@ examples in the book.
    linear combination of edges of `A`.  Thus every element of `B` is a linear
    combination of elements of `A`.  This is not possible since `|B| > |A|`.
 
-   This proof is different from the one in the book because I don't quite get that one..
+   This proof is different from the one in the book because I don't quite get that one...
+
+   The "mapping" with linear algebra may be superficial, but it really looks
+   interesting. 
+   ---------------------------
 
    **Proof-A**:  This amounts to proving that, for any `n`-vertices complete
    graph, any subgraph with more than `n - 1` edges contains a cycle.
