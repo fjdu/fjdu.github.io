@@ -1,8 +1,8 @@
 # Site settings
-title: fjdu's Notes
+title: Fujun Du's Notes
 email: fujun.du@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Coding, math, physics, etc.
+  Programming, mathematics, physics, etc.
 #baseurl: "" # the subpath of your site, e.g. /blog/
 #url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: fjdu
