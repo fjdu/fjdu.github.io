@@ -5,6 +5,8 @@ date:   2015-09-17 Thu 13:28:12
 categories: Python
 ---
 
+This is written for beginners.
+
 # 0. 程序的运行方式
 
 <ul>

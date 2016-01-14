@@ -1,0 +1,76 @@
+---
+layout: post
+title:  "Matroids"
+date:   2016-01-13 Wed 18:13:52
+categories: algorithm
+---
+
+Ref: CLRS section 16.4
+
+They define `matroid` in an abstract manner.  Here I just talk about two
+examples in the book.
+
+1. Let `A` and `B` each be a collection of linearly independent row vectors of
+   a matrix, and `|A| < |B|`.  Then it is possible to choose one row vector `x`
+   from `B - A` such that `A + x` is still linearly independent.
+
+   **Proof**:
+   
+   Suppose otherwise, then every element of `B - A` can be expressed as linear
+   combination of elements of `A`, hence every element of `B` can be expressed
+   as a linear combination of elements of `A` (note that `B = B - A + B ⋂ A`
+   and `(A ⋂ B) ⊆ A`), while still being linearly independent with each other.
+   This is not possible, because `|B| > |A|` and you cannot make a large
+   linearly independent set from a small set.
+
+2. Let `A` and `B` be a collection of edges of a graph such that neither `A` nor
+   `B` contains a cycle, and `|A| < |B|`.  Then it is possible to choose
+   one edge from `B - A` and put it into `A` such that `A` still does not
+   contain a cycle.
+
+   **Proof**:
+
+   Let's do something "fancy".  Here I will try to use linear algebra to study
+   graph theory.  This is possible, since we can always embed a graph in
+   high-dimensional (actually 3-dimension is enough) Euclidean space so that
+   there is no crossing between edges.
+
+   A set of edges is called _linearly dependent_, if they form cycles.  We call
+   it _exactly linearly dependent_, if they form exactly one cycle, and every
+   edge is one edge of this cycle.
+
+   A set of edges is called _linearly independent_, if there is no cycle within
+   them.
+
+   We can form a new edge by connecting the beginning and end vertices of a path
+   (if this edge does not exist yet).  We call such an edge a _linear
+   combination_ of edges in the path.
+
+   Given `n` linearly independent edges, if they form a path, then by
+   connecting the vertices there can be `n(n-1)/2` edges in total.  But no
+   matter which subset you choose, at most `n` of them can be linearly
+   independent.  In other word, if you have more than `n` of them, you will
+   have cycle(s).  This statement is not really obvious, and needs to be proved
+   (see Proof-A).
+   
+   Note that if they don't form a path, say, for example, if the `n` edges are
+   disconnected from each other, then you cannot do any "linear combination".
+
+   Now we see an *exact mapping* between this theorem and the first one, so we
+   can use exactly the same argument.
+
+   Suppose otherwise, then every element of `B - A` can be expressed as a
+   linear combination of edges of `A`.  Thus every element of `B` is a linear
+   combination of elements of `A`.  This is not possible since `|B| > |A|`.
+
+   This proof is different from the one in the book because I don't quite get that one..
+
+   **Proof-A**:  This amounts to proving that, for any `n`-vertices complete
+   graph, any subgraph with more than `n - 1` edges contains a cycle.
+   Actually, for a tree, the number of edges is the number of vertices minus
+   one.  If the subgraph contains `k` disconnected trees, then the number of
+   edges will be the number of vertices minus `k`.  Hence in a graph with no
+   cycle, the number of vertices is larger than the number of edges by at least
+   one (this applies even with isolated vertices).  Q.E.D.
+
+   This proof is in the book.

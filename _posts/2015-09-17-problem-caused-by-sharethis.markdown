@@ -30,4 +30,4 @@ which is not needed (and very annoying in any imaginable context).
 
     - Side effect is bad bad bad...
     - Read the damn documentation.
-    - The documentation should be as short as possible, but not shorter.
+    - The documentation should be as short as possible.
