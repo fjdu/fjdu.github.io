@@ -187,10 +187,10 @@ P = \frac{32G\Omega^6 I^2 e^2}{5c^5},
 <li> Bassan, Advanced Interferometers and the Search for Gravitational Waves Lectures from the First VESF School on Advanced Detectors </li>
 <li> Saulson, Fundamentals of Interferometric Gravitational Wave Detectors </li>
 <li> Weinberg, Gravitation and cosmology principles and applications of the general theory of relativity </li>
-<li> https://dcc.ligo.org/public/0122/P1500227/006/placeholder.pdf </li>
-<li> https://dcc.ligo.org/LIGO-P1500218/public/main </li>
-<li> https://dcc.ligo.org/LIGO-P1500269/public/main </li>
+<li> <a href="https://dcc.ligo.org/public/0122/P1500227/006/placeholder.pdf"> LIGO Doc1</a> </li>
+<li> <a href="https://dcc.ligo.org/LIGO-P1500218/public/main"> LIGO Doc2 </a> </li>
+<li> <a href="https://dcc.ligo.org/LIGO-P1500269/public/main"> LIGO Doc3 </a> </li>
 <li> http://arxiv.org/abs/1404.5623 </li>
-<li> http://journals.aps.org/prd/abstract/10.1103/PhysRevD.57.2061 </li>
+<li> <a href="http://journals.aps.org/prd/abstract/10.1103/PhysRevD.57.2061"> Will, 1998, Bounding the mass of the graviton using gravitational-wave observations of inspiralling compact binaries </a>  </li>
 </ol>
 </section>
