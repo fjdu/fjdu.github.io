@@ -176,13 +176,11 @@ P = \frac{32G\Omega^6 I^2 e^2}{5c^5},
 36^2 + 29^2 = 2137 < 62^2 = 3844,
 \]
 所以面积确实增大了。
-<p>
 也就是说，黑洞合并后，质量是会减小，但不能小太多。
 </div>
 </section>
 
-<section>
-<h1>References</h1>
+<section><h1>References</h1>
 <ol>
 <li> Abbott, 2016, Observation of Gravitational Waves from a Binary Black Hole Merger </li>
 <li> Schutz, 2010, Gravitational Waves, Sources, and Detectors </li>
