@@ -9,12 +9,20 @@ Ref: http://mathworld.wolfram.com/LogisticEquation.html
 
 # Logistic map
 
-$x_{n+1} = r x_n (1-x_n)$
+<div>
+\(x_{n+1} = r x_n (1-x_n)\)
+</div>
 
 # Logistic function
 
-$\frac{L}{1+\exp(ax+b)}$
+<div>
+\(\frac{L}{1+\exp(ax+b)}\)
+</div>
 
 # Logistic equation
 
-$x(t) = rx(1-x)$
+<div>
+\(x(t) = rx(1-x)\)
+</div>
+<p>
+Yes, they are related.

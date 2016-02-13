@@ -66,7 +66,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 </section>
 
 <section><h1> 引力波是个什么东西</h1>
-简单说，就是爱因斯坦场方程弱场近似下的平面波解。这不是说强场情况下就没有引力波了，只不过，在强场情形，方程高度非线性，精确求解很困难。
+简单说，就是爱因斯坦场方程弱场近似下的行波解。这不是说强场情况下就没有引力波了，只不过，在强场情形，方程高度非线性，精确求解很困难。
 <h3>源方程</h3>
 \[
     \square^2 h_{\mu\nu} = -16\pi S_{\mu\nu},
@@ -171,9 +171,9 @@ P = \frac{32G\Omega^6 I^2 e^2}{5c^5},
 <section>
 <h1>References</h1>
 <ol>
-<li> 2016-Abbott-Observation of Gravitational Waves from a Binary Black Hole Merger </li>
-<li> 2010-Schutz-Gravitational Waves, Sources, and Detectors </li>
-<li> Bassan-Advanced Interferometers and the Search for Gravitational Waves Lectures from the First VESF School on Advanced Detectors </li>
+<li> Abbott, 2016, Observation of Gravitational Waves from a Binary Black Hole Merger </li>
+<li> Schutz, 2010, Gravitational Waves, Sources, and Detectors </li>
+<li> Bassan, Advanced Interferometers and the Search for Gravitational Waves Lectures from the First VESF School on Advanced Detectors </li>
 <li> Saulson, Fundamentals of Interferometric Gravitational Wave Detectors </li>
 <li> Weinberg, Gravitation and cosmology principles and applications of the general theory of relativity </li>
 </ol>
