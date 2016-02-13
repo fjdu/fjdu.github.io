@@ -2,7 +2,9 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <div> 
+        <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    </div>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -13,6 +15,7 @@
         </svg>
       </a>
 
+        <!-- <div class="text site-description"> {{ site.description }} </div> -->
       <div class="trigger">
         {% for page in site.pages %}
           {% if page.title %}
