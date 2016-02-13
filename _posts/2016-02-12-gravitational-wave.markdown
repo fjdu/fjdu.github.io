@@ -153,6 +153,12 @@ P = \frac{32G\Omega^6 I^2 e^2}{5c^5},
 </ul>
 </section>
 
+<section><h1>怎么得到黑洞的质量、距离这些信息的</h1>
+<div>
+前面我们基于相当粗糙的计算用两个黑洞的质量得出了与观测可比的0.006秒这个数字。那么反过来，如果观测数据给出了0.006秒这个数字，我们也应该可以得出两个黑洞质量（之和）。更加精细的模型 (基于数值相对论计算) 与观测数据的时间序列结合可以给出更多信息，比如两个黑洞各自的质量，合并过程造成的质量损失之类。知道了黑洞各自的质量和质量损失，可以算出引力波辐射的功率，结合实际探测到的引力波强度 (激光传播的路径长度的变化比例)，可以得到那两个黑洞与地球的距离，这样算出来的距离称为光度距离。另外，这次的引力波信号被两个在不同地点的观测站几乎同时探测到。“几乎同时”，也就是说，不完全是同时，根据这个时间差 (\(6.9^{+0.5}_{-0.4}毫秒\))，可以得到两个黑洞在天空中的大致方位 (两个观测站只能确定出一个长条形区域)。
+</div>
+</section>
+
 <section><h1>黑洞面积不减定理</h1>
 <div>
 由于引力波辐射，合并后新黑洞的质量小于合并前两个黑洞的质量之和。但这里有个不平凡的东西值得提一下。Bekenstein以及霍金等人发现，黑洞必须携带熵。黑洞熵正比于黑洞表面积，而表面积正比于质量平方。霍金曾经证明了黑洞面积不减定理 (前提是不考虑黑洞的霍金辐射；对于宏观黑洞霍金辐射极慢，当然可以不考虑)，即两个黑洞合并变成一个新黑洞后，新的面积不会比原来各自的面积小。换言之，黑洞合并过程不会违背热力学第二定律。确实是这样，因为
@@ -163,8 +169,13 @@ P = \frac{32G\Omega^6 I^2 e^2}{5c^5},
 </div>
 </section>
 
-<section><h1>引力波的量子化</h1>
+<section><h1>引力波有多普勒效应吗？</h1>
+真空中引力波的传播方程与电磁波的一致 (至少弱场近似下如此)，所以一样会有多普勒效应和宇宙学红移。宇宙学红移的存在意味着观测站测量到的时间长度跟信号出发地点的时间长度不一致，做模型拟合时需要考虑进去。
+</section>
+
+<section><h1>量子化的引力波</h1>
 <div>
+如果引力子有质量，则传播速度会小于光速，并且不同波长的引力子的传播速度会不同，这会影响引力波的波形。本次发现给出的限制是，引力子的康普顿波长超过\(10^{13}千米\)。这个限制比之前基于太阳系的研究给出的限制好些，但并不比基于弱引力透镜给出的限制好多少。不过这个东西是许多人对这次直接探测到引力波感到特别兴奋的一个原因，因为提供了一种独立的用来研究引力的可能未知特性的方法。
 <pr>
 然而引力波的量子化不是引力的量子化。
 </div>
@@ -178,5 +189,10 @@ P = \frac{32G\Omega^6 I^2 e^2}{5c^5},
 <li> Bassan, Advanced Interferometers and the Search for Gravitational Waves Lectures from the First VESF School on Advanced Detectors </li>
 <li> Saulson, Fundamentals of Interferometric Gravitational Wave Detectors </li>
 <li> Weinberg, Gravitation and cosmology principles and applications of the general theory of relativity </li>
+<li> https://dcc.ligo.org/public/0122/P1500227/006/placeholder.pdf </li>
+<li> https://dcc.ligo.org/LIGO-P1500269/public/main </li>
+<li> https://dcc.ligo.org/LIGO-P1500218/public/main </li>
+<li> http://arxiv.org/abs/1404.5623 </li>
+<li> http://journals.aps.org/prd/abstract/10.1103/PhysRevD.57.2061 </li>
 </ol>
 </section>
