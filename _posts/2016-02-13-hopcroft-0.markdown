@@ -62,6 +62,21 @@ categories: data science
         \]
         </li>
         Exponential function does not grow as fast as the factorial function, hence \(A(d)\) and \(V(d)\) go to zero as \(d\) goes to infinity.
+    <li> The way to calculate the surface area of \(d\)-dimensional sphere is to make use of the \(d\)-dimensional Gauss integral:
+        \[
+            \int_{-\infty}^{\infty} e^{-(x_1^2 + x_2^2 + \cdots + x_d^2)}dx_1dx_2\cdots dx_n.
+        \]
+        </li>
+    <li> Volume is near the equator: that is, most of the volume is below or above the equator plane, with height of the order of \(1/\sqrt{d-1}\). </li>
+    <li> The volume is in a narrow annulus.  Most volume is contained in an annulus of width \(O(1/d)\). </li>
+    <li> The surface area is near the equator. </li>
+    <li> Generating points uniformly at random on the surface of a sphere: generate \(d\) Gaussian variables, then normalize this \(d\)-dimensional vector and project it onto the surface of a unit sphere. </li>
+    <li> The natural scale of a \(d\)-dimensional Gaussian is \(\sigma\sqrt{d}\). </li>
+    <li> Mixture of spherical Gaussians can be separated provided their centers are separated by more than \(d^{1/4}\).  But better algorithms are available. </li>
+    <li> Suppose \(x\) and \(y\) are taken from the same spherical unit variance Gaussian distribution, then \(|x-y| = \sqrt{2d} + O(1)\). </li>
+    <li> Suppose \(x\) and \(y\) are taken from two spherical unit variance Gaussian distributions separated by \(\delta\), then \(|x-y|^2 = 2d + \delta^2 \pm O(\sqrt{d})\). </li>
+    <li> Two randomly chosen points in high dimension are almost surely nearly orthogonal. </li>
+    <li> Algorithm for separating points from two Gaussians </li>
 </ol>
 </div>
 
