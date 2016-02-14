@@ -1,0 +1,68 @@
+---
+layout: post
+title:  "Hopcroft: Foundations of Data Science, Chapter 2"
+date:   2016-02-13 Sat 22:18:30
+categories: data science
+---
+
+<section>
+<h1> High-dimensional space </h1>
+<div>
+<ol>
+    <li> Vector space model: representing documents by vectors </li>
+    <li> Dot-product: measure similarity </li>
+    <li> \(A^TA\): pairwise similarities </li>
+    <li> Better way: first find the best fit direction </li>
+    <li> Orthogonality: disjoint, disparity </li>
+    <li> Chernoff bounds </li>
+    <li> Central limit theorem: distribution of distances from random points to a point tends to concentrate about an average distance. </li>
+    <li> Random projection theorem: a collection of vectors can be projected to a lower-dimensional space approximately preserving all pairwise distances.  Does not work for pairwise dot products,  </li>
+    <li> Law of large numbers:
+        \[
+            P\left(\left|\frac{x_1+x_2+\cdots+x_n}{n}-E(x)\right| > \epsilon\right) \le \frac{\sigma^2}{n\epsilon^2}
+        \]
+        </li>
+    <li> Markov's inequality:
+        For nonnegative random variable \(x\) and for \(a>0\),
+        \[
+            P(x\ge a) \le \frac{E(x)}{a}.
+        \]
+        Proof:
+        \[
+            E(x) = \int_0^\infty x p(x) dx \ge \int_a^\infty xp(x) dx \ge a\int_a^\infty p(x) dx = a P(x\ge a).
+        \]
+        Corollary:
+        \[
+            P(x\ge cE(x)) \le \frac{1}{c}.
+        \]
+        </li>
+    <li> Chebyshev's inequality: \(x\) is a random variable with mean \(m\) and variance \(\sigma^2\),
+        \[
+            P(|x-m|\ge a\sigma) \le \frac{1}{a^2}.
+        \]
+        Proof:
+        \[
+            P(|x-m|\ge a\sigma) = P((x-m)^2\ge a^2\sigma^2) \le \frac{E((x-m)^2)}{a^2\sigma^2} = \frac{1}{a^2}.
+        \]
+        </li>
+    <li> Proof of law of large numbers is straightforward from Chebyshev's inequality:
+        \[
+            P\left(\left|\frac{x_1+x_2+\cdots+x_n}{n}-E(x)\right| > \epsilon\right) \le \frac{\sigma^2/n}{\epsilon^2}.
+        \]
+        </li>
+    <li> As the dimension \(d\) increases, the volume of a unit cube is always one, and the maximum possible distance between two points grow as \(\sqrt{d}\). </li>
+    <li> For unit-radius sphere, as \(d\) increases, its volume goes to zero, while the maximum possible distance between two points stays at two. </li>
+    <li> A vertex of a unit cube is at distance \(\sqrt{d}/2\) from the origin, and lie far outside the unit radius sphere for large \(d\). </li>
+    <li> The mid-point of each face of the cube is only at distance 1/2 from the origin and is inside the unit sphere. </li>
+    <li> For large \(d\) almost all the volume of the cube is located outside the sphere. </li>
+    <li> The surface area and volume of a unit sphere
+        \[
+            A(d) = \frac{2\pi^{d/2}}{\Gamma(d/2)},
+            V(d) = \frac{2\pi^{d/2}}{d\Gamma(d/2)}.
+        \]
+        </li>
+        Exponential function does not grow as fast as the factorial function, hence \(A(d)\) and \(V(d)\) go to zero as \(d\) goes to infinity.
+</ol>
+</div>
+
+</section>
