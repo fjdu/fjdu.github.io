@@ -109,7 +109,8 @@ SGNS 把单词和上下文都嵌入到低维空间 \(\mathbb{R}^d\)，生成单�
 <p>
 把 \(l\) 重写为
 \[
-    l = \sum_{w\in V_W} \sum_{c\in V_C} \#(w,c) \log\sigma(\vec{w}\cdot\vec{c}) + \sum_{w\in V_W} \#(w) \left\{k\cdot \mathbb{E}_{c_N\sim P_D} \left[\log\sigma(-\vec{w}\cdot\vec{c}_N)\right]\right\}。
+    l = \sum_{w\in V_W} \sum_{c\in V_C} \#(w,c) \log\sigma(\vec{w}\cdot\vec{c}) +\\
+    \quad\quad\quad \sum_{w\in V_W} \#(w) \left\{k\cdot \mathbb{E}_{c_N\sim P_D} \left[\log\sigma(-\vec{w}\cdot\vec{c}_N)\right]\right\}。
 \]
 这里用到了 \(\sum_{w\in V_W}\sum_{c\in V_C} \#(w,c) f(w) = \sum_{w\in V_W} \#(w) f(w) \) 这个性质，因为 \(\sum_{c\in V_C} \#(w,c) = \#(w)\)。
 </p>
@@ -222,7 +223,7 @@ PMI 来自 SGNS 的 \(k=1\) 的情形，而不同的 \(k\) 会显著提高嵌入
 <h2> 4.2 谱降维：SVD 比 SPPMI 好 </h2>
 <p>
 虽说稀疏矢量表示表现良好，使用稠密低维矢量还是有优势的，比如可以提高计算效率，以及更好的一般性。
-一种与 SGNS 的随机梯度下降算法不同的矩阵分解方法是“截断奇异值分解” (truncated Singular Value Decomposition; SVD)。这是线性代数里针对 \(L_2\) 损失的秩为 \(d\) 的最优分解算法。SVD 把矩阵 \(M\) 分解为三个矩阵的乘积，\(U\cdot\Sigma\cdot V^\mathsf{T}\)，这里 \(U\) 和 \(V\) 是正交矩阵，而 \(\Sigma\) 是奇异值组成的对角矩阵。以 \(\Sigma_d\) 表示顶部 \(d\) 个奇异值组成的对角矩阵，\(U_d\) 和 \(V_d\) 表示从 \(U\) 和 \(V\) 选择相应的列组成的矩阵。则矩阵 \(M_d = U_d\cdot\Sigma_d\cdot V_d^\mathsf{T}\) 是秩为 \(d\) 的矩阵里对原矩阵 \(M\) 近似最好的，在
+一种与 SGNS 的随机梯度下降算法不同的矩阵分解方法是截断“奇异值分解” (truncated Singular Value Decomposition; SVD)。这是线性代数里针对 \(L_2\) 损失的秩为 \(d\) 的最优分解算法。SVD 把矩阵 \(M\) 分解为三个矩阵的乘积，\(U\cdot\Sigma\cdot V^\mathsf{T}\)，这里 \(U\) 和 \(V\) 是正交矩阵，而 \(\Sigma\) 是奇异值组成的对角矩阵。以 \(\Sigma_d\) 表示顶部 \(d\) 个奇异值组成的对角矩阵，\(U_d\) 和 \(V_d\) 表示从 \(U\) 和 \(V\) 选择相应的列组成的矩阵。则矩阵 \(M_d = U_d\cdot\Sigma_d\cdot V_d^\mathsf{T}\) 是秩为 \(d\) 的矩阵里对原矩阵 \(M\) 近似最好的，在
 \[
     M_d = \text{argmin}_{\text{Rank}(M')=d} ||M'-M||_2
 \]
