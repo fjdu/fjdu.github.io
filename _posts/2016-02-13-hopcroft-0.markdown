@@ -76,7 +76,7 @@ categories: data science
     <li> Suppose \(x\) and \(y\) are taken from the same spherical unit variance Gaussian distribution, then \(|x-y| = \sqrt{2d} + O(1)\). </li>
     <li> Suppose \(x\) and \(y\) are taken from two spherical unit variance Gaussian distributions separated by \(\delta\), then \(|x-y|^2 = 2d + \delta^2 \pm O(\sqrt{d})\). </li>
     <li> Two randomly chosen points in high dimension are almost surely nearly orthogonal. </li>
-    <li> Algorithm for separating points from two Gaussians </li>
+    <li> Algorithm for separating points from two Gaussians. </li>
 </ol>
 </div>
 
