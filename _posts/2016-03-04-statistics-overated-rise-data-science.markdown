@@ -13,8 +13,8 @@ categories: data science
 原作者 Daniel Lemire，是魁北克大学的一名计算机科学教授。他的研究集中在数据索引技术。他是名技术乐观派。
 </p>
 
-<h3>[原文地址](http://lemire.me/blog/2016/03/03/statistics-is-overrated-the-rise-of-data-science/)
-</h3>
+<h3>原文地址</h3>
+[Daniel Lemire's blog](http://lemire.me/blog/2016/03/03/statistics-is-overrated-the-rise-of-data-science/)
 
 <hr>
 
