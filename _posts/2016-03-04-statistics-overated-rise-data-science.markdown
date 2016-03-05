@@ -6,7 +6,7 @@ categories: data science
 ---
 
 <p>
-这是一篇翻译文章；文章观点不代表译者观点。
+这是一篇翻译文章；<b>文章观点不代表译者观点</b>。
 </p>
 
 <p>
@@ -17,9 +17,11 @@ categories: data science
 [Daniel Lemire's blog](http://lemire.me/blog/2016/03/03/statistics-is-overrated-the-rise-of-data-science/)
 
 <hr>
+<p>
+</p>
 
 <p>
-随着工业和科学革命的发展，出现了大量搜集可信数据的机构。历史上第一次我们可以问英格兰白银总产量是多少并得到有意义的回答。
+随着工业和科学革命的发展，出现了许多搜集可信数据的机构。历史上第一次我们可以问英格兰白银总产量是多少并得到有意义的回答。
 </p>
 
 <p>
