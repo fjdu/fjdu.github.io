@@ -1,0 +1,80 @@
+---
+layout: post
+title:  "世仇与旧友：小说中动态关系的无监督学习"
+date:   2016-04-12 Tue 02:18:20
+categories: machine learning
+---
+
+这是一篇翻译文章。原文作者是 [Mohit Iyyer](https://www.cs.umd.edu/~miyyer/) 等人。
+
+<h3>
+原文链接
+</h3>
+[Feuding Families and Former Friends: Unsupervised Learning for Dynamic Fictional Relationships](https://www.cs.umd.edu/~miyyer/pubs/2016_naacl_relationships.pdf)
+
+<hr>
+<p></p>
+
+<section>
+<h2>摘要</h2>
+<p>
+理解小说两个角色之间的关系如何随着时间变化 (比如从最好的朋友变成死敌) 是数字人文里的一个主要挑战。我们为这个任务提出一种新的非监督神经网络，引入词典学习来生成可解释的精确关系轨迹。之前描述文学关系的工作依赖于用预先规定好的标签做了标注的剧情概要，而我们的模型从小说原文数据集学到一系列全局关系描述符和每种关系的描述符的轨迹。我们发现我们的模型学到了事件的描述符 (比如婚礼或谋杀)，以及人际状态描述符 (比如爱与悲伤)。我们的模型在两个众包任务上超过了话题模型的基准线，并且我们发现了与一个先存数据集中的标注的关系。
+</p>
+</section>
+
+<section>
+<h2>1. 描述角色关系</h2>
+<p>
+当书中两个角色分面包时，他们的这一餐这是处于生理需求，还是意味着更多？ Cognard-Black et al. (2014) 认为这种简单的互动反映了角色的多样性和背景，而 Foster (2009) 认为一顿饭的气氛可以预示一本书余下部分的走向。为了支持这些理论，学者们用他们的文学专长在不同书之间建立联系：Gabriel Conroy’s
+dissonance from his family at a sumptuous feast in
+Joyce’s The Dead, the frustration of Tyler’s mother in
+Dinner at the Homesick Restaurant, and the grudging respect for a blind man eating meatloaf in Carver’s
+Cathedral.
+</p>
+
+<p>
+然而，这些洞察来之不易。经年累月的细致阅读和内化才能在书籍之间建立联系，这意味着关系的对称性和原型很可能继续隐藏在每年出版的成千上万本书中，除非文学专家主动地去搜集这些关系。
+</p>
+
+<p>
+自然语言处理技术可以发现文本中的模式 (Jockers, 2013)，被越来越多地用来辅助这些文学探索。第 6 节我们回顾已有的利用固定标签分类或聚类书中角色关系 (朋友或敌人) 的技术。但这些技术忽略了不在已有语汇中的角色互动，并且不能处理关系在一本书的进程中演化动态性，比如 the vampiric downfall of Lucy and Arthur’s engagement in Dracula (Figure 1) or Winston Smith’s rat-induced betrayal of Julia in 1984.
+</p>
+
+<p>
+为了处理这个问题，我们提出非监督关系建模的任务，让模型为每对文学形象同时学习关系描述符集合以及关系演化轨迹。不同于赋予一个特定关系单个描述符，学到的轨迹是一个描述符序列 (图 1)。
+</p>
+
+<p>
+Gruber et al. (2007) 的贝叶斯隐含话题马尔科夫模型 (HTMM) 自然称为我们这个任务的选择，因为它可以计算关系描述符 (以话题的形式)，且有额外的时间组件。但是我们的实验表明 HTMM 学到的描述符会不自洽，且等多关注于事件和环境 (比如饭局，室外) 而不是人际状态如喜悦和悲伤等。
+</p>
+
+<p>
+受近期深度学习进展的鼓舞，我们提出关系建模网络 (RMN)，一个深度复现自动编码器的新变种，引入词典学习来学习关系描述符。在两个众包评价上 RMN 取得了比 HTMM 和别的话题模型基准线更好的描述符一致性和轨迹精度 (第 4 节)。第 5 节讲了定性结果并与已有的文学研究建立了联系。
+</p>
+</section>
+
+<section>
+<h2>2. 一个角色互动数据集</h2>
+<p>
+我们的数据集包含来自 Project Gutenberg 和其它网络来源的 1383 部虚构作品。前者包含有限的主要是古典的文学作品 (不含科幻)，所以我们加了更多的不同风格的当代小说 (推理，言情，奇幻)。
+</p>
+
+<p>
+为了识别角色提及，我们运行了 Book-NLP 流程 (Bamman et al. 2014)；这流程包含角色名字聚类，被引用角色的识别，以及共同指代的分辨。对每个检测到的角色提及，我们定义一个跨越提及之前 100 个和之后 100 个词的窗口。我们没有使用句子和段落边界，因为它们对不同作者变化很大 (e.g., William Faulkner routinely wrote single sentences longer than many of Hemingway’s paragraphs)。我们数据集里的所有窗口都包含刚好对两个角色的提及。这是个相当严格的要求，强制减小了数据大小，而包含多于两个角色的窗口一般噪音较多。
+</p>
+
+<p>
+识别出可用的窗口后，我们过滤掉那些少于五个窗口的关系。不这样做的话，我们的数据集会被不重要角色的短暂关系占据；这是不想要的，因为我们关注的是长期的、可变的关系。最后，我们过滤了词库，删掉了 500 个最常见的词语，以及那些在少于 100 本书中出现的词语。后一个步骤帮助纠正时间阶段和流派导致的变化 (e.g., “thou” and “thy” found in older works
+like the Canterbury Tales)。最终的数据集包含 20013 个关系和 380408 个窗口，而词库包含 16223 个词。
+</p>
+</section>
+
+<section>
+<h2>3. 关系建模网络</h2>
+<p>
+本节给出将 RMN 用于关系建模的数学描述。我们的模型在思想上跟话题模型类似：给定一个输入数据集，RMN 的输出是关系描述符 (话题) 集合，以及——对数据集中的每个关系——一个轨迹，或者一系列这些描述符的概率分布 (文档-话题分派)。然而，RMN 使用了深度学习来更好地控制描述符一致性和轨迹平滑性 (第 4 节)。
+</p>
+
+<h3>3.1 问题的形式化</h3>
+
+</section>
