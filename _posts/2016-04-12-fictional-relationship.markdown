@@ -25,11 +25,7 @@ categories: machine learning
 <section>
 <h2>1. 描述角色关系</h2>
 <p>
-当书中两个角色分面包时，他们的这一餐这是处于生理需求，还是意味着更多？ Cognard-Black et al. (2014) 认为这种简单的互动反映了角色的多样性和背景，而 Foster (2009) 认为一顿饭的气氛可以预示一本书余下部分的走向。为了支持这些理论，学者们用他们的文学专长在不同书之间建立联系：Gabriel Conroy’s
-dissonance from his family at a sumptuous feast in
-Joyce’s The Dead, the frustration of Tyler’s mother in
-Dinner at the Homesick Restaurant, and the grudging respect for a blind man eating meatloaf in Carver’s
-Cathedral.
+当书中两个角色分面包时，他们的这一餐这是处于生理需求，还是意味着更多？ Cognard-Black et al. (2014) 认为这种简单的互动反映了角色的多样性和背景，而 Foster (2009) 认为一顿饭的气氛可以预示一本书余下部分的走向。为了支持这些理论，学者们用他们的文学专长在不同书之间建立联系： 乔伊斯的《往生者》中 Gabriel Conroy 在一次奢华宴会上与他家庭的不和谐音，《思家饭馆》中 Tyler 母亲的沮丧，以及 Carver 的《大教堂》里对吃肉糕的盲人的不情愿的尊重。
 </p>
 
 <p>
@@ -37,7 +33,7 @@ Cathedral.
 </p>
 
 <p>
-自然语言处理技术可以发现文本中的模式 (Jockers, 2013)，被越来越多地用来辅助这些文学探索。第 6 节我们回顾已有的利用固定标签分类或聚类书中角色关系 (朋友或敌人) 的技术。但这些技术忽略了不在已有语汇中的角色互动，并且不能处理关系在一本书的进程中演化动态性，比如 the vampiric downfall of Lucy and Arthur’s engagement in Dracula (Figure 1) or Winston Smith’s rat-induced betrayal of Julia in 1984.
+自然语言处理技术可以发现文本中的模式 (Jockers, 2013)，被越来越多地用来辅助这些文学探索。第 6 节我们回顾已有的利用固定标签分类或聚类书中角色关系 (朋友或敌人) 的技术。但这些技术忽略了不在已有语汇中的角色互动，并且不能处理关系在一本书的进程中演化动态性，比如 the vampiric downfall of Lucy and Arthur’s engagement in Dracula (图 1) or Winston Smith’s rat-induced betrayal of Julia in 1984.
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Fig-1.png" id="Fig1">
