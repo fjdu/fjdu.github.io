@@ -11,6 +11,11 @@ categories: artificial intelligence
 
 原文链接：[arXiv](http://arxiv.org/abs/1511.08130)，一共 36 页
 
+<section>
+<img src="{{ site.url }}/pictures/2016-04-18-mikolov.png" id="Fig1">
+<p class="image-caption"><a href="https://research.facebook.com/tomas-mikolov">Tomas Mikolov</a></p></img>
+</section>
+
 <hr>
 <p></p>
 
@@ -217,11 +222,3 @@ categories: artificial intelligence
     - 他们的文章就是讲这个的
     - 真正的智能不应该把数据分成训练数据、保留数据、检验数据几个部分；应该一边读入数据一边训练
     - 并行很必要
-
-<hr>
-<p></p>
-
-<section>
-<img src="{{ site.url }}/pictures/2016-04-18-mikolov.png" id="Fig1">
-<p class="image-caption"><a href="https://research.facebook.com/tomas-mikolov">Tomas Mikolov</a></p></img>
-</section>
