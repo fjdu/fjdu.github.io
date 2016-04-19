@@ -54,7 +54,6 @@ categories: artificial intelligence
     - 奖励
 
 - 规模化
-
     - 更多复杂问题，更少的任务，更少的监督
     - 与真人交流
     - 真实输入信号 (比如互联网)
