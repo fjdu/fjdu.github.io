@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "通往机器智能之路线图"
+title:  "通往机器智能之路"
 date:   2016-04-18 Mon 20:46:11
 categories: artificial intelligence
 ---
