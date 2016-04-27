@@ -117,11 +117,11 @@ Queinnec 这样诗意描绘的自省塔是对进行自省 (这里理解为检查
 
 <h3>\(\lambda\)-运算基础</h3>
 <p>
-现在我们来关注计算上下文的表达；也就是，词法环境加延续。为了阐释这些，最明显和研究得最好的方法是 \(\lambda\)-运算，一种很简单的 (理论的) 编程语言。\(\lambda\)-运算里表达式的写法跟通常的数学写法有些不同；比如，函数作用的括号写在外面，即用 \((f\ x)\) 表示 \(f(x)\)。\((f\ x)\) 里的括号是语法的一部分，总是表达函数的作用，不能随便乱用。函数通过 lambda abstraction 构造出来；比如，恒等函数写作 \(\lambda x.x\)。也就是说，先写 \(\lambda\) 这个符号，然后一个变量，然后一个点，最后一个表达式作为函数体。变量可被用来命名表达式；比如，把恒等函数应用到 \(y\) 上可以写为 “\(g(y)\) where \(g(x)=x\)”，在\(\lambda\)-运算中写为 \((\lambda g . (g\ y)\ \lambda x . x)\)。<sub>[译者注] 这里应该这么理解：\(\lambda g.(g\ y)\) 定义了一个函数，其操作是把自变量作用到 \(y\) 上；然后再把这个定义出的函数作用到恒等函数 \(\lambda x.x\) 上。</sub>
+现在我们来关注计算上下文的表达；也就是，词法环境加延续。为了阐释这些，最明显和研究得最好的方法是 \(\lambda\)-运算，一种很简单的 (理论的) 编程语言。\(\lambda\)-运算里表达式的写法跟通常的数学写法有些不同；比如，函数作用的括号写在外面，即用 \((f\ x)\) 表示 \(f(x)\)。\((f\ x)\) 里的括号是语法的一部分，总是表达函数的作用，不能随便乱用。函数通过 lambda abstraction 构造出来；比如，恒等函数写作 \(\lambda x.x\)。也就是说，先写 \(\lambda\) 这个符号，然后一个变量，然后一个点，最后一个表达式作为函数体。变量可被用来命名表达式；比如，把恒等函数应用到 \(y\) 上可以写为 “\(g(y)\) where \(g(x)=x\)”，在\(\lambda\)-运算中写为 \((\lambda g . (g\ y)\ \lambda x . x)\)。<sub>[译者注: 这里应该这么理解：\(\lambda g.(g\ y)\) 定义了一个函数，其操作是把自变量作用到 \(y\) 上；然后再把这个定义出的函数作用到恒等函数 \(\lambda x.x\) 上。]</sub>
 </p>
 
 <p>
-形式上，基本 \(\lambda\)-运算 的语法 \(\Lambda_1\) 是通过下面的递归语法定义的
+形式上，基本 \(\lambda\)-运算的语法 \(\Lambda_1\) 是通过下面的递归语法定义的
 \begin{equation}
     \Lambda_1 ::= \nu\ |\ \lambda\nu . \Lambda_1\ |\ (\Lambda_1\ \Lambda_1)
 \end{equation}
@@ -133,11 +133,49 @@ Queinnec 这样诗意描绘的自省塔是对进行自省 (这里理解为检查
 \begin{equation}
     (\lambda x . M\ N)\qquad \overset{\beta}{\Longrightarrow} \qquad M[x\leftarrow N]
 \end{equation}
-所以提供表达式 \(N\) 给 lambda abstraction \(\lambda x . M\) 的“值”是把 \(M\) 里所有出现的 \(x\) 替换为 \(N\)。当然，考虑到嵌套的 lambda abstraction 如果使用相同的变量名称的话会带来各种问题，但这里我们就不管了，而假定所有变量名都是唯一的。
+所以提供表达式 \(N\) 给 lambda abstraction \(\lambda x . M\) 得到的“值”是把 \(M\) 里所有出现的 \(x\) 替换为 \(N\)。当然，考虑到嵌套的 lambda abstraction 如果使用相同的变量名称的话会带来各种问题，但这里我们就不管了，而假定所有变量名都是唯一的。
 </p>
 
 <p>
 在这里你可能会好奇如何对任何一个 \(\Lambda_1\) 表达式求值。比如，一个变量应该被取值为其值，但我们如何处理好由 lambda abstraction 引入的那些绑定？为此我们需要引入一个词法环境，包含作用域内所有变量的绑定。词法环境通常用 \(\rho\) 表示，在这里表达为一个函数，接收一个变量，返回其绑定的值。于是我们可以把我们的第一个取值器 \(\mathcal{E}_1\) 定义为一个接收一个表达式和词法环境而返回表达式的值的函数。原则上这个取值器可以用任何形式规定，但如果我们用 \(\lambda\)-运算来描述它，我们可以容易地朝着无穷自省塔的方向构造，因为这样的话计算上下文和求值器以及表达式拥有相同的格式。
+</p>
+
+<p>
+\(\Lambda_1\) 包含三种语法类别，而 \(\mathcal{E}_1\) 把它们用双重方括号分开。再次强调，我们不要混淆定义语言与被定义的语言。在这里为了展示自省塔的运行，它们都是 \(\lambda\)-运算，但我们不应该混淆塔的不同层！所以在下面的定义中，如果在双重方括号之间的 \(\Lambda_1\) 表达式是第 \(n\) 层，则等号右边是第 \(n-1\) 层的 \(\Lambda_1\) 表达式。\(\mathcal{E}_1\) 如下定义
+\(\newcommand\dsbl{[\![}
+\newcommand\dsbr{]\!]}\)
+\begin{equation}
+    \mathcal{E}_1\dsbl x\dsbr = \lambda \rho . (\rho\; x)
+\end{equation}
+\begin{equation}
+    \mathcal{E}_1\dsbl \lambda x . M\dsbr = \lambda \rho . \lambda \varepsilon . (\mathcal{E}_1\dsbl M\dsbr\;\rho[x\leftarrow\varepsilon])
+\end{equation}
+\begin{equation}
+    \mathcal{E}_1\dsbl(M\;N)\dsbr = \lambda \rho . ((\mathcal{E}_1\dsbl M\dsbr \;\rho)\; (\mathcal{E}_1\dsbl N\dsbr\;\rho))
+\end{equation}
+注意到所有右边的表达式都是需要一个词法环境 \(\rho\) 的 lambda abstraction，词法环境被用来查询变量的值。要开始对一个表达式取值，可以提供一个空的环境。按照第一种情况，一个变量 \(x\) 的值是其在 \(\rho\) 内的绑定。按照第二种情况，一个 lambda abstraction 的值本身也是个表达式，需要一个值 \(\varepsilon\) 作为输入；当接收到输入后，\(M\) 在扩展了从 \(x\) 到 \(\varepsilon\) 的绑定后的 \(\rho\) 内取值。按照第三种情况，一个函数作用的值是操作符 \(M\) 作用到 \(N\) 上的值，假定 \(M\) 的值的确是个函数。操作符和操作数在同一个词法环境中取值。
+</p>
+
+<p>
+为了记号方便，我们将把嵌套应用和 lambda abstraction 简写。于是 \(((f\;x)\ y)\) 可写为 \((f\;x\;y)\)，而 \(\lambda x.\lambda y.M\) 可写为 \(\lambda xy . M\)。
+</p>
+
+<p>
+我们已经引入了显式的词法环境，但对于完整的计算上下文而言，我们还需要延续的表示。为了那个目的，我们把取值器 \(\mathcal{E}_1\) 按照延续传递风格 (continuation-passing style; CPS) 重写。这意味着一个延续，作为一个函数 (历史上记为 \(\kappa\))，当需要进一步取值时会被扩展，或者当已经取值时可以被启动。这样，\(\kappa\) 永远表达的时未来的计算——尽管，如前面描述的，通常只是 (把延续) 部分地展开。新的取值器 \(\newcommand{\EO}{\mathcal{E}_1}\) \(\EO'\) 显式地在完全的计算上下文里工作，把词法环境 \(\rho\) 和延续 \(\kappa\) 作为自变量。形式地
+\begin{equation}
+    \mathcal{E}_1'\dsbl x\dsbr = \lambda \rho\kappa . (\kappa\;(\rho\; x))
+\end{equation}
+\begin{equation}
+    \mathcal{E}_1'\dsbl \lambda x . M\dsbr = \lambda \rho\kappa . (\kappa\; \lambda \varepsilon\kappa' . (\mathcal{E}_1'\dsbl M\dsbr\;\rho[x\leftarrow\varepsilon]\;\kappa'))
+    \label{eq_EOm}
+\end{equation}
+\begin{equation}
+    \mathcal{E}_1'\dsbl(M\;N)\dsbr = \lambda \rho\kappa . (\mathcal{E}_1'\dsbl M\dsbr \;\rho\; \lambda f . (\mathcal{E}_1'\dsbl N\dsbr\;\rho\;\lambda x . (f\; x\; \kappa)))
+\end{equation}
+在第一个和第二个情形，延续被立即调用，这意味着未来的计算被约简了。在这情况是恰当的，因为没有别的需要被取值的东西。但是，在第三种情况，有两件事要做：操作符和操作数要被取值。换句话说，当取得操作符 (\(M\)) 的值时，对操作数 (\(N\)) 的取值是一个要在未来进行的计算。于是，代表了未来的延续，必须被扩展。这个事实精确地体现在为操作符 \(\EO'\dsbl M\dsbr\) 的取值器提供一个新的、扩展了原先提供的 \(\kappa\) 的延续：它是一个函数，等待操作符的值 \(f\)。只要收到了 \(f\) 的值，这个扩展的延续就会调用 \(\EO'\dsbl N\dsbr\) 的取值器，但再次使用新的延续 \(\lambda x . (f\;x\;\kappa)\)。这是因为，当操作数 \(N\) 被取值时，仍然有未来需要进行的计算；也就是，实际调用操作符的值 \(f\) 并作用到操作数的值 \(x\) 上。在这个调用发生之时，未来的计算与在给 \(M\) 和 \(N\) 取值之前的未来一模一样；因此，那个时刻的延续 \(\kappa\) 必须被传递到函数调用上。其实，从\eqref{eq_EOm} 我们可以看到要用这个延续做什么：一个 lambda abstraction 被取值，得到一个二元函数，这里 \(\varepsilon\) 是操作数的值，而 \(\kappa'\) 是当这个函数真正被调用时的延续。这也是需要被提供给函数体 (\(\EO'\dsbl M\dsbr\)) 的取值器的延续。
+</p>
+
+<p>
 </p>
 
 <p>
@@ -183,7 +221,7 @@ Queinnec 之所以提到用于实现解释器的那些函数的可修改性，�
 </p>
 
 <p>
-为了查找保存在存储空间 \(\sigma\) 的\ \(p\) 位置的值，我们对于数字使用记号 \(\sigma[p\rightarrow n]\)，而对于对使用 \(\sigma[p\rightarrow a:d]\)。存储分配记为 \(\sigma[q\overset{\ast}\leftarrow n]\) 和 \(\sigma[q\overset{\ast}\leftarrow a:d]\)，这里 \(q\) 是一个新位置，在那里可以找到被分配空间的数字或对。\(\mathbb{N}_\sigma\) 用来标记存有数字的那些位置；所有别的位置存储对。常数的集合记为 \(\mathbb{P}\)。遇到不清楚的地方时，读者可以在附录里看到关于记号和存储的更多细节。
+为了查找保存在存储空间 \(\sigma\) 的 \(p\) 位置的值，我们对于数字使用记号 \(\sigma[p\rightarrow n]\)，而对于对使用 \(\sigma[p\rightarrow a:d]\)。存储分配记为 \(\sigma[q\overset{\ast}\leftarrow n]\) 和 \(\sigma[q\overset{\ast}\leftarrow a:d]\)，这里 \(q\) 是一个新位置，在那里可以找到被分配空间的数字或对。\(\mathbb{N}_\sigma\) 用来标记存有数字的那些位置；所有别的位置存储对。常数的集合记为 \(\mathbb{P}\)。遇到不清楚的地方时，读者可以在附录里看到关于记号和存储的更多细节。
 </p>
 
 <p>
@@ -192,7 +230,7 @@ Queinnec 之所以提到用于实现解释器的那些函数的可修改性，�
 
 <h2>讨论</h2>
 <p>
-\(\Lambda_3\) 是可以为自省哥德尔机编程的语言吗？它当然可以作为这样的语言的核心。极致的简单和小巧 (因此容易推理)，同时允许完全的功能性自省。还应注意到我们没有剩下什么没有详细规定的东西；程序、函数，以及数字的表达结构和存储方式都是精确知道的。即便每个基本函数的内存分配的次数都是实现知道且可预测的。这对于哥德尔机这样的自我推理系统而言是重要的信息。在那种意义上 \(\Lambda_3\) 的求值器解决了所有我们在研究基于纯粹\(\lambda\)-运算的元循环求值器塔时发现那些的自省牵涉的问题。
+\(\Lambda_3\) 是可以为自省哥德尔机编程的语言吗？它当然可以作为这样的语言的核心。极致的简单和小巧 (因此容易推理)，同时允许完全的功能性自省。还应注意到我们没有剩下什么没有详细规定的东西；程序、函数，以及数字的表达结构和存储方式都是精确知道的。即便每个基本函数的内存分配的次数都是事先知道且可预测的。这对于哥德尔机这样的自我推理系统而言是重要的信息。在那种意义上 \(\Lambda_3\) 的求值器解决了所有我们在研究基于纯粹 \(\lambda\)-运算的元循环求值器塔时发现那些的自省所牵涉的问题。
 </p>
 
 <p>
