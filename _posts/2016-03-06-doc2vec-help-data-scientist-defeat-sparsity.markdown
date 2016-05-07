@@ -12,9 +12,10 @@ categories: machine learning
 本文包含 Mike Tamir 的贡献。他是 Galvanize 的首席科学家和学习官。
 
 <hr>
+<p></p>
 
 <p>
-我们曾经讨论过 [http://www.galvanize.com/blog/add-and-subtract-words-like-vectors-with-word2vec-2/](Word2Vec) 的强大功能。这是一种生成单词表征的方法，生成的单词表征可以像数学矢量一样运算。但它究竟为我们做了什么？为什么它那么重要？
+我们曾经讨论过 <a href="http://www.galvanize.com/blog/add-and-subtract-words-like-vectors-with-word2vec-2">Word2Vec</a> 的强大功能。这是一种生成单词表征的方法，生成的单词表征可以像数学矢量一样运算。但它究竟为我们做了什么？为什么它那么重要？
 </p>
 
 <p>
