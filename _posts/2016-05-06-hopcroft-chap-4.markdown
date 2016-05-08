@@ -178,6 +178,15 @@ categories: data science
 </p>
 
 <p>
+根据奇异值分解，我们发现 \(\V{u}_i^\trsps A = \sigma_i\V{v}_i^\trsps\)，所以 \(|\V{u}_i^\trsps A| = \sigma_i\)。\(\V{u}_1\) 必定是所有单位矢量里让 \(|\V{u}^\trsps A|\) 最大的。这可归结为求
+\[
+    \argmax_{\substack{\{c_i,\ i=1,\ \ldots,\ r\}\\\sum_{i=1}^r c_i^2=1}}\sum_{i=1}^r c_i^2\sigma_i^2
+\]
+的问题，其答案是显然的。类似地，\(\V{u}_2\) 必定是所有与 \(\V{u}_1\) 垂直的单位矢量里让 \(|\V{u}^\trsps A|\) 最大的。可如此推下去，于是我们证明了 \(\V{u}_i\) 序列与 \(\V{v}_i\) 序列有类似的性质。
+</p>
+
+<h2>最佳 \(k\) 秩近似</h2>
+<p>
 
 </p>
 
