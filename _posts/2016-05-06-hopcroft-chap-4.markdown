@@ -13,6 +13,9 @@ categories: data science
 \newcommand\V[1]{\mathbf{#1}}
 \newcommand\argmax{\mathop{\mathrm{arg\,max}}}
 \newcommand\theorem[1]{定理\ {#1}\ }
+\newcommand\froben[1]{\left\lVert{#1}\right\rVert_\text{F}}
+\newcommand\twonorm[1]{\left\lVert{#1}\right\rVert_\text{2}}
+\newcommand\norm[1]{\left|{#1}\right|}
 \)
 </p>
 
@@ -186,29 +189,149 @@ categories: data science
 </p>
 
 <h2>最佳 \(k\) 秩近似</h2>
+
+<p>
+有两种重要的矩阵范数，一种是前面定义的 Frobenius 范数 \(\lVert A\rVert_\text{F}\)，一种是 2-范数 \(\lVert A\rVert_2\)。后者定义为
+\begin{equation}
+    \max_{|\V{v}|=1} |A\V{v}|,
+\end{equation}
+也就是等于最大的奇异值。回顾前面讲的，Frobenius 范数是矩阵代表的所有点到原点距离的平方和。而 2-范数是往某个方向的投影距离的平方和的最大值，也就是沿着第一奇异矢量的投影距离的平方和的最大值。
+</p>
+
+<p>
+对于 \(k\in\{1,\ 2,\ \ldots,\ r\}\)，令
+\begin{equation}
+    A_k = \sum_{i=1}^k \sigma_i\V{u}_i\V{v}_i^\trsps,
+\end{equation}
+也就是 \(A\) 的奇异值分解的前 \(k\) 项。\(A_k\) 的秩为 \(k\)。<sub>\(A_1\) 相当于一个列向量乘以一个常数后横向重复了 \(d\) 次，因此一个列向量乘以一个行向量得到的矩阵的秩总是 1 (除非其中一个是零矢量，这样得到的矩阵为零矩阵)。一个矩阵的秩定义为这个矩阵的线性独立列向量的个数 (等于线性独立行向量的个数)，等于这个矩阵的列数减去以这个矩阵为系数的齐次微分方程组的解空间的维数。比如当一个方阵可逆，则只有零解，解空间维数为 0，秩为其行数或列数。\(A_k\) 的列数为 \(d\)。以 \(A_k\) 为系数的齐次线性方程组的解空间由 \(\V{v}_{k+1},\ \V{v}_{k+2},\ \ldots,\ \V{v}_r\)，以及 \(d-r\) 个垂直于 \(\V{v}_1,\ \V{v}_2,\ \ldots,\ \V{v}_r\) 的基矢量张成，所以解空间的维数是 \(r-k+d-r=d-k\)，因此 \(A_k\) 的秩为 \(d-(d-k)=k\)。</sub> 下面我们证明，\(A_k\) 是 \(A\) 的最佳 \(k\) 秩近似，这里近似误差通过 Frobenius 范或者 2-范数定义。
+</p>
+
+<p>
+\(A_k\) 的行可看成是由 \(A\) 的行投影到前 \(k\) 个奇异矢量张成的子空间得到。这个从 \(A_k\) 的定义即可得到。
+</p>
+
+<p>
+\(\theorem{4.7}\) 对于任何秩不超过 \(k\) 的矩阵 \(B\)，下式成立
+\begin{equation}
+    \froben{A-A_k} \le \froben{A-B}.
+\end{equation}
+证明：令 \(B\) 是秩不超过 \(k\) 的让 \(\froben{A-B}^2\) 最小的矩阵。令 \(V\) 表示 \(B\) 的行张成的矩阵。\(V\) 的维数顶多为 \(k\)。\(B\) 的每行必定等于相应的 \(A\) 的行在 \(V\) 上的投影；否则，把 \(B\) 的一行换成相应的 \(A\) 的一行在 \(V\) 上的投影可以减小 \(\froben{A-B}^2\)，<sub>给定一个向量和一个子空间，求子空间里的一个向量使得它与给定向量的差的长度最短。答案就是，当这个向量等于给定矢量在子空间里的投影时最短；通过把待求矢量表示为子空间的正交基的线性叠加可以证明这个。</sub>同时不改变 \(V\) (也就不会改变 \(B\) 的秩)。这样一来，\(\froben{A-B}^2\) 就是 \(A\) 的行向量与 \(V\) 的距离的平方和。之前已经证明，\(A\) 的最佳拟合 \(k\) 维子空间是 \(V_k\)，也就是说，当 \(V=V_k\)，\(A\) 的行向量与 \(V\) 的距离的平方和最小。换句话说，此时，\(B\) 的行向量张成的子空间必定等于 \(V_k\)；再考虑到 \(A_k\) 的确等于 \(A\) 在 \(V_k\) 上的投影，于是必须有 \(B=A_k\)，得证。
+</p>
+
+<p>
+接下来考虑 2-范数。
+</p>
+
+<p>
+引理：
+\begin{equation}
+    \twonorm{A-A_k}^2 = \sigma_{k+1}^2.
+\end{equation}
+证明：\(A-A_k = \sum_{i=k+1}^r \sigma_i\V{u}_i\V{v}_i^\trsps\)。我们需要求一个单位矢量 \(\V{v} = \sum_{i=1}^r \alpha_i\V{v}_i\) 使得 \(|(A-A_k) \V{v}|\) 最大。
+\begin{equation}
+\begin{split}
+    &|(A-A_k)\V{v}| = \left|\sum_{i=k+1}^r \alpha_i\sigma_i\V{u}_i\V{v}_i^\trsps\V{v}_i\right|\\
+    =& \norm{\sum_{i=k+1}^r\alpha_i\sigma_i\V{u}_i} = \sqrt{\sum_{i=k+1}^r\alpha_i^2\sigma_i^2},
+\end{split}
+\end{equation}
+其中 \(\sum_{i=1}^r\alpha_i^2 = 1\)。显然，当 \(\alpha_{k+1}=1\) 而别的都为零时结果最大。
+</p>
+
+<p>
+\(\theorem{4.9}\) 对于任何秩不超过 \(k\) 的矩阵 \(B\)，下式成立
+\begin{equation}
+    \twonorm{A-A_k} \le \twonorm{A-B}.
+\end{equation}
+证明：如果 \(A\) 的秩不超过 \(k\)，则上式左边为 0，结论显然。所以假定 \(A\) 的秩大于 \(k\)。假定存在秩不超过 \(k\) 的矩阵 \(B\) 使得 \(\sigma_{k+1} > \twonorm{A-B}\)。\(B\) 的零空间，<sub>可以把一个矩阵的零空间想象为垂直于这个矩阵的所有行向量的向量张成的子空间。</sub>也就是以 \(B\) 为系数的齐次线性方程组的解张成的空间，其维数至少是 \(d-k\)。令 \(\V{v}_1,\ \V{v}_2,\ \ldots,\ \V{v}_{k+1}\) 表示 \(A\) 的前 \(k+1\) 个奇异矢量。基于维数的考虑，存在非零矢量 \(\V{z}\) 属于下述集合
+\[
+    \text{Null}(B) \cap \text{Span}\left\{\V{v}_1,\ \V{v}_2,\ \ldots,\ \V{v}_{k+1}\right\},
+\]
+也就是这两个集合的交集不为空。令 \(\V{z}_1,\ \V{z}_2,\ \ldots,\ \V{z}_{d-k}\) 为 \(\text{Null}(B)\) 里的 \(d-k\) 个线性独立矢量。现在，\(\V{z}_1,\ \V{z}_2,\ \ldots,\ \V{z}_{d-k},\ \V{v}_1,\ \V{v}_2,\ \ldots,\ \V{v}_{k+1}\) 是 \(d\) 维空间里的 \(d+1\) 个矢量，因此线性相关。于是可以找到 \(\alpha_1,\ \alpha_2,\ \ldots,\ \alpha_{d-k}\) 以及 \(\beta_1,\ \beta_2,\ \ldots,\ \beta_{k+1}\)，使得 \(\sum_{i=1}^{d-k}\alpha_i\V{z}_i = \sum_{j=1}^{k+1}\beta_j\V{v}_j\)。<sub>原书此处把上标弄错了。</sub>令 \(\V{z}=\sum_{i=1}^{d-k}\alpha_i\V{z}_i\) 且把 \(\V{z}\) 归一化。我们要证明，\(\norm{(A-B)\V{z}}\ge\sigma_{k+1}\)。首先，按照 2-范数的定义
+\begin{equation}
+    \twonorm{A-B}^2 \ge \norm{(A-B)\V{z}}^2.
+\end{equation}
+由于 \(\V{z}\) 在 \(B\) 的零空间内，\(B\V{z}=\V{0}\)。于是
+\begin{equation}
+    \twonorm{A-B}^2 \ge \norm{A\V{z}}^2.
+\end{equation}
+同时，由于 \(\V{z} = \sum_{j=1}^{k+1}\beta_j\V{v}_j\)，把 \(A\) 的奇异值分解代入即可看出上式不会小于 \(\sigma_{k+1}^2\)。得证。
+</p>
+
+<h2>计算奇异值分解的幂方法</h2>
+
+<p>
+由 \(A\) 的奇异值分解可得
+\begin{equation}
+    B \equiv A^\trsps A = \sum_i \sigma_i^2 \V{v}_i\V{v}_i^\trsps.
+\end{equation}
+\(B\) 是一个对称方阵，于是左右奇异矢量相同。继续求平方
+\begin{equation}
+    B^2 = \sum_i \sigma_i^4 \V{v}_i\V{v}_i^\trsps.
+\end{equation}
+一般情形
+\begin{equation}
+    B^k = \sum_i \sigma_i^{2k} \V{v}_i\V{v}_i^\trsps.
+\end{equation}
+如果 \(\sigma_1 > \sigma_2\)，则
+\begin{equation}
+    \frac{1}{\sigma_1^{2k}} B^k \to \V{v}_1\V{v}_1^\trsps.
+\end{equation}
+注意到 \(\froben{B^k}\to \sigma_1^{2k}\)，所以，可以先计算 \(B^k\)，然后除以 \(\froben{B^k}\)，再把得到的矩阵的第一个列向量归一化，就得到对 \(\V{v}_1\) 的近似。
+</p>
+
+<p>
+问题在于，当 \(A\) 是个巨大 (但稀疏) 的矩阵时，比如大小为 \(10^8\times10^8\) 但仅包含 \(10^9\) 个非零元素，得到的 \(B\) 会是一个 \(10^8\times10^8\) 且稠密的矩阵。这种情况下 \(B\) 的存储都成问题，何况计算它的幂。即使 \(A\) 没那么大，计算矩阵的幂仍然是个慢速过程。因此需要更有效率的方法。
+</p>
+
+<p>
+给定一个随机矢量 \(\V{x} = \sum c_i\V{v}_i\)，我们有
+\begin{equation}
+    B^k\V{x} \to \sigma_1^{2k}\V{v}_1\V{v}_1^\trsps\;\sum c_i\V{v}_i = \sigma_1^{2k}c_1\V{v}_1.
+\end{equation}
+归一化上面这个矢量就得到 \(\V{v}_1\)。注意到 \(B^k\V{x}\) 的计算只是 \(2k\) 次稀疏矩阵乘以矢量的计算，计算量小多了。
+</p>
+
+<p>
+当第一个和第二个奇异值差别不大时，上面的方法收敛会比较慢。但下面会证明在这种情况幂方法会收敛到“接近最大”的那些奇异值对应的奇异矢量。
+</p>
+
+<p>
+引理：令 \((x_1,\ x_2,\ \ldots,\ x_d)\) 是一个 \(d\) 维随机单位矢量。那么 \(\norm{x_1} \ge \frac{1}{20\sqrt{d}}\) 的几率至少是 \(9/10\)。
+</p>
+
+<h2>奇异值分解的应用</h2>
+
+<h3>主成分分析</h3>
+
 <p>
 
 </p>
 
-<p>
-
-</p>
+<h3>球形高斯分布混合的聚类</h3>
 
 <p>
 
 </p>
 
-<p>
-
-</p>
+<h3>谱分解</h3>
 
 <p>
 
 </p>
 
+<h3>奇异矢量和文件分级</h3>
+
 <p>
 
 </p>
+
+<h3>在一个离散优化问题里的应用</h3>
+
+<p>
+
+</p>
+
+<h2>奇异矢量与本征矢量</h2>
 
 <p>
 
