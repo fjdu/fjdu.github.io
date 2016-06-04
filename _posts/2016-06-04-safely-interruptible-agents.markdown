@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "可被安全中止的智能代理人"
+title:  "可被安全中断的智能代理人：规避人工智能威胁的一种方案"
 date:   2016-06-04 Sat 15:02:45
 categories: machine learning
 ---
