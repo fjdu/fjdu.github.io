@@ -28,7 +28,7 @@ categories: machine learning
 <hr><p></p>
 
 <p>
-Dwan Ev 郑重地用黄金焊上了最后一个连接。十来个摄像头注视着他，把现场画面通过超光速通讯传到整个宇宙。
+Dwan Ev 庄重地用黄金焊上了最后一个连接。十来个摄像头注视着他，把现场画面通过超光速通讯传到整个宇宙。
 </p>
 
 <p>
@@ -80,7 +80,7 @@ Dwar Ev 的脸上突然闪现出恐惧。他赶紧去抓电源开关。
 本文的主要内容相当数学化，采用的是通常数学论文那种“定义 \(\rightarrow\) 定理 \(\rightarrow\) 证明”的格式。下面的翻译略去了这部分内容，仅给出梗概。
 </p>
 
-<a href="https://intelligence.org/files/Interruptibility.pdf"><b>论文链接</b></a>
+<b>论文链接:</b>  <a href="https://intelligence.org/files/Interruptibility.pdf">Safely Interruptible Agents</a>
 
 <hr><p></p>
 
