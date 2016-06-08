@@ -52,8 +52,14 @@ categories: machine learning
 一致的人格特征
 
   - 对不同问题给出的答案应该对应一致的人格实体
-  - 比如对“你多大”与“你几岁”的回答应该相同，对“你住哪儿”与“你所在的城市是哪个”的回答不应该有矛盾
+  - 比如对“你多大”与“你几岁”的回答应该相同，对“你住哪儿”与“你所在的城市是哪个”的回答不应该有矛盾；反面例子见图 1
   - [基于人格的神经对话模型](http://arxiv.org/abs/1603.06155)
+
+<div style="align: center; text-align: center;">
+<img src="{{ site.url }}/pictures/2016-06-07-chatbot-1.png" id="Fig1" height="400"></img>
+<p class="image-caption" style="width: 400 px; text-align: center;">图 1: 回答不自洽的反面例子。来自<a href="http://arxiv.org/abs/1603.06155">基于人格的神经对话模型</a>。</p>
+</div>
+
 
 模型的评估
 
@@ -79,7 +85,7 @@ categories: machine learning
   - 语法错误代价高昂
     - 可能会赶走用户
     - 通过信息检索模型避免语法错误和冒犯性言语
-    - 生成模型给出的回答必须由其它技术辅助一面出轨 (微软 Tay 的错误)
+    - 生成模型给出的回答必须由其它技术辅助以免脱线 (微软 Tay 的错误)
 
 <hr><p></p>
 
