@@ -12,7 +12,7 @@ categories: artificial intelligence
 原文链接：[arXiv](http://arxiv.org/abs/1511.08130)，一共 36 页
 
 <div>
-<img src="{{ site.url }}/pictures/2016-04-18-mikolov.png" id="Fig1"></img>
+<img src="{{ site.url }}/pictures/2016-04-18-mikolov.png" id="Fig1" height="120">
 <p class="image-caption"><a href="https://research.facebook.com/tomas-mikolov">Tomas Mikolov</a></p>
 </div>
 

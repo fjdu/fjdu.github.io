@@ -56,7 +56,7 @@ categories: machine learning
   - [基于人格的神经对话模型](http://arxiv.org/abs/1603.06155)
 
 <div style="align: center; text-align: center;">
-<img src="{{ site.url }}/pictures/2016-06-07-chatbot-1.png" id="Fig1" height="400"></img>
+<img src="{{ site.url }}/pictures/2016-06-07-chatbot-1.png" id="Fig1" height="400">
 <p class="image-caption" style="width: 400 px; text-align: center;">图 1: 回答不自洽的反面例子。来自<a href="http://arxiv.org/abs/1603.06155">基于人格的神经对话模型</a>。</p>
 </div>
 

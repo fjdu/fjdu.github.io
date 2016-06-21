@@ -37,7 +37,7 @@ categories: machine learning
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Fig-1.png" id="Fig1">
-<p class="image-caption">图 1: 描述关系动态演化轨迹的示例。目标是在无监督的前提下从虚构文学作品的原始文本学到描述符及其演化轨迹。</p></img>
+<p class="image-caption">图 1: 描述关系动态演化轨迹的示例。目标是在无监督的前提下从虚构文学作品的原始文本学到描述符及其演化轨迹。</p>
 
 <p>
 为了处理这个问题，我们提出非监督关系模型的任务，让模型为每对文学形象同时学习关系描述符集合以及关系演化轨迹。不同于赋予一个特定关系单个描述符，我们的模型学到的轨迹是一个描述符序列 (图 1)。
@@ -89,7 +89,7 @@ like the Canterbury Tales)。最终的数据集包含 20013 个关系和 380408 
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Fig-2.png">
-<p class="image-caption">图 2：RMN 单次计算的例子。模型用 \(\mathbf{R}\) 里描述符的线性组合来近似一个输入区间 \(v_{s_t}\) 的矢量覆盖。描述符权重 \(d_t\) 定义了每个时间点的关系状态——当视为一个序列时——构成一个关系轨迹。</p></img>
+<p class="image-caption">图 2：RMN 单次计算的例子。模型用 \(\mathbf{R}\) 里描述符的线性组合来近似一个输入区间 \(v_{s_t}\) 的矢量覆盖。描述符权重 \(d_t\) 定义了每个时间点的关系状态——当视为一个序列时——构成一个关系轨迹。</p>
 
 <h4>3.2.1 用矢量平均模拟区间</h4>
 <p>
@@ -213,17 +213,17 @@ LDA 和 NUBBI 不能处理区间的时序，因为它们把所有关系视为可
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Fig-3.png" id="Fig3">
-<p class="image-caption">图 3: 单词侵入实验的模型精度。RMN 比别的高。</p></img>
+<p class="image-caption">图 3: 单词侵入实验的模型精度。RMN 比别的高。</p>
 
 <p>
 平均看来，RMN 的描述符比基准的可解释性好，对所有 \(K\) 值达到 0.73 的平均模型精度 (图 3)。三个话题模型基准的模型精度都差不多，在 0.5 附近徘徊。GRMN 和 RMN 之间差异很小；但是，图 6 对学到的角色和书嵌入的可视化可能会对文学学者有用。表 1 列出了 RMN 和 HTMM 的高精度和低精度描述符的例子。完整列表在附加材料中。
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Fig-6.png" id="Fig6">
-<p class="image-caption">图 6: </p></img>
+<p class="image-caption">图 6: </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Tab-1.png" id="Tab1">
-<p class="image-caption">表 1: </p></img>
+<p class="image-caption">表 1: </p>
 
 <h3>4.4 演化轨迹有意义吗</h3>
 <p>
@@ -235,7 +235,7 @@ LDA 和 NUBBI 不能处理区间的时序，因为它们把所有关系视为可
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Fig-4.png" id="Fig4">
-<p class="image-caption">图 4: Crowdflower 概要匹配任务的例子。工作人员需要选择最符合 Siddartha 与 Govinda 之间关系演化的轨迹。左边是 RMN，右边是 HTMM。</p></img>
+<p class="image-caption">图 4: Crowdflower 概要匹配任务的例子。工作人员需要选择最符合 Siddartha 与 Govinda 之间关系演化的轨迹。左边是 RMN，右边是 HTMM。</p>
 
 <p>
 为了生成可视化，我们先让一个外部人员用表 1 中的单个词语标注两个模型里的每个描述符。为了公平，标注者不知道背后的模型是什么。对于 RMN，我们通过展示在每个时刻 \(t\) 的权重矢量 \(d_t\) 的最大分量对应的标签来可视化。对于 HTMM 类似，我们展示每个时刻最可能的话题。
@@ -259,7 +259,7 @@ Massey et al. (2015) 的类同标记要求工作人员把一个关系描述为�
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Tab-2.png" id="Tab2">
-<p class="image-caption">表 2: </p></img>
+<p class="image-caption">表 2: </p>
 
 </section>
 
@@ -274,7 +274,7 @@ Massey et al. (2015) 的类同标记要求工作人员把一个关系描述为�
 </p>
 
 <img src="{{ site.url }}/pictures/2016-04-12-fictional-relationship-Fig-5.png" id="Fig5">
-<p class="image-caption">图 5: </p></img>
+<p class="image-caption">图 5: </p>
 
 <p>
 然而，RMN 更擅长人际关系。基准话题模型未能学到负面情感描述符，比如悲伤和受苦，这解释了图 5 最左边为什么 HTMM 关于 Arthur 和 Lucy 的轨迹不准确。所有的基准话题模型学到重复的话题；表 2 中，一个关于爱的描述符是强烈正面的，而另一个重复的描述符是强烈负面的。RMN 通过唯一性惩罚绕过了这个问题。
