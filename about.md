@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Fujun Du's (杜福君) personal notes.  Based on Jekyll ([jekyllrb.com](http://jekyllrb.com/)).
+Notes about math, physics, astrophysics, computer science, machine learning, and pretty much anything I (= [Fujun Du = 杜福君](https://github.com/fjdu)) find interesting.
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+Based on Jekyll ([jekyllrb.com](http://jekyllrb.com/)).  You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
