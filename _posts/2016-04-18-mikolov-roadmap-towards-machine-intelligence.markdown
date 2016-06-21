@@ -11,10 +11,10 @@ categories: artificial intelligence
 
 原文链接：[arXiv](http://arxiv.org/abs/1511.08130)，一共 36 页
 
-<section>
+<div>
 <img src="{{ site.url }}/pictures/2016-04-18-mikolov.png" id="Fig1"></img>
 <p class="image-caption"><a href="https://research.facebook.com/tomas-mikolov">Tomas Mikolov</a></p>
-</section>
+</div>
 
 <hr>
 <p></p>
