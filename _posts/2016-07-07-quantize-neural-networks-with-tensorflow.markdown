@@ -110,7 +110,7 @@ bazel-bin/tensorflow/examples/label_image/label_image \
 
 如果你对八位输入进行任何算术计算，你会自然地累积得到超过八位精度能表达的数。比如，八位数相加的结果需要九位，八位数相乘的结果需要十六位。如果你把八位乘法的结果求和 (矩阵乘法需要做这个)，结果会超过十六位，通常需要至少 20 到 25 位，取决于点乘运算有多长。
 
-这带来一个问题：我们需要把超过八位的输出缩减传递给下一个操作。对矩阵乘法而言，一个办法是根据可能的极端输入计算其输出的范围。这是安全的，因为我们可以通过分析证明其正确性。但实际上多数权重和活化值都分布得更均匀。这意味着实际的范围更窄。所以，我们使用了 [QuantizeDownAndShrinkRange](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/quantization/kernels/quantize_down_and_shrink_range.cc) 操作符来分析实际的范围。也可以通过大量的训练数据来获得参数范围，然后把这些参数范围硬编码进去，但目前我们没有这么做。
+这带来一个问题：我们需要把超过八位的输出缩减传递给下一个操作。对矩阵乘法而言，一个办法是根据可能的极端输入计算其输出的范围。这是安全的，因为我们可以通过分析证明其正确性。但实际上多数权重和活化值都分布得更均匀。这意味着实际的范围更窄。所以，我们使用了 [QuantizeDownAndShrinkRange](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/quantization/kernels/quantize_down_and_shrink_range.cc) _[译者注：这个算符实质上就是在求一个张量各元素的最大值和最小值]_ 操作符来分析实际的范围。也可以通过大量的训练数据来获得参数范围，然后把这些参数范围硬编码进去，但目前我们没有这么做。
 
 <h1>舍入如何进行？</h1>
 
@@ -118,7 +118,7 @@ bazel-bin/tensorflow/examples/label_image/label_image \
 
 <h1>下一步是什么？</h1>
 
-我们已经证明通过八位二进制数值表示而不是浮点数可以在移动设备和嵌入式设备上获得极好的性能。你可以在[gemmlowp](https://github.com/google/gemmlowp)看到我们用于优化矩阵乘积的框架。我们还需要把从 TensorFlow 操作符学到的经验应用到移动设备上以获得最佳性能。目前的量化实现可以作为一个足够快和足够精确的参考，可以促进对更多种设备的八位模型支持。
+我们已经证明通过八位二进制数值表示而不是浮点数可以在移动设备和嵌入式设备上获得极好的性能。你可以在 [gemmlowp](https://github.com/google/gemmlowp) 看到我们用于优化矩阵乘积的框架。我们还需要把从 TensorFlow 操作符学到的经验应用到移动设备上以获得最佳性能。目前的量化实现可以作为一个足够快和足够精确的参考，可以促进对更多种设备的八位模型支持。
 
 如果你感兴趣，推荐你仔细琢磨 TensorFlow 的量化代码，特别是实现操作符量化的[核心部分](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/quantization/kernels)，都包含了参考实现。
 
