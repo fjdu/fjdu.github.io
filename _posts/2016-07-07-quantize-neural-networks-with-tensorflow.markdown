@@ -118,7 +118,7 @@ bazel-bin/tensorflow/examples/label_image/label_image \
 
 <h1>下一步是什么？</h1>
 
-我们已经证明通过八位二进制数值表示而不是浮点数可以在移动设备和嵌入式设备上获得极好的性能。你可以在 [gemmlowp](https://github.com/google/gemmlowp) 看到我们用于优化矩阵乘积的框架。我们还需要把从 TensorFlow 操作符学到的经验应用到移动设备上以获得最佳性能。目前的量化实现可以作为一个足够快和足够精确的参考，可以促进对更多种设备的八位模型支持。
+我们已经证明通过八位二进制数值表示而不是浮点数可以在移动设备和嵌入式设备上获得极好的性能。你可以在 [gemmlowp](https://github.com/google/gemmlowp) 看到我们用于优化矩阵乘积的框架 _[译者注：看了一下，核心部分是用汇编语言实现的，比如[这个文件](https://github.com/google/gemmlowp/blob/master/internal/kernel_SSE.h)；实现过程注意了缓存大小，参考[这个文件](https://github.com/google/gemmlowp/blob/master/internal/common.h)；[这个文件](https://github.com/google/gemmlowp/blob/master/internal/kernel_reference.h)是针对尚无优化核心代码的 CPU 的参考实现，没有用汇编，算法就是简单的三重循环。]_。我们还需要把从 TensorFlow 操作符学到的经验应用到移动设备上以获得最佳性能。目前的量化实现可以作为一个足够快和足够精确的参考，可以促进对更多种设备的八位模型支持。
 
 如果你感兴趣，推荐你仔细琢磨 TensorFlow 的量化代码，特别是实现操作符量化的[核心部分](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/quantization/kernels)，都包含了参考实现。
 
