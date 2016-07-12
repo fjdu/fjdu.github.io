@@ -13,3 +13,5 @@ markdown: kramdown
 #markdown: redcarpet
 #redcarpet:
 #  extensions: ["tables", "fenced_code_blocks"]
+
+excerpt_separator: ""
