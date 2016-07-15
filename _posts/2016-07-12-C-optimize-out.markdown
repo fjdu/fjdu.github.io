@@ -131,3 +131,15 @@ LBB1_1:                                 ## =>This Inner Loop Header: Depth=1
 {% endhighlight %}
 
 可见优化的版本里最后执行的是一个简单的死循环 (34-35 行)，对函数 `f` 的调用被完全移除了，尽管还是“假模假式”地定义了 `f` (什么功能都没有，也没有递归调用的部分)。
+
+至于 `gcc (clang)` 是怎么推断出 `f` 这个函数虽然在做事，但做的事是“封闭的”、对外界没有“逻辑上的”副作用 (尽管有事实上的副作用，那就是栈溢出)，可以在[这里](http://llvm.org/docs/Passes.html)看到一些端倪。想了想，也许是通过把递归转换为循环可以看出 `f` 这个函数没有副作用，所以就移除了。
+
+那个页面提到 `LLVM` 会为了方便后续分析而把
+{% highlight c linenos=table %}
+for (i = 7; i*i < 1000; ++i)
+{% endhighlight %}
+变成
+{% highlight c linenos=table %}
+for (i = 0; i != 25; ++i)
+{% endhighlight %}
+真没想到它会做这样的变换。
