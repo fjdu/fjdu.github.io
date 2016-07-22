@@ -31,13 +31,13 @@ categories: algorithm
 
 # 目录
 
-1. 引言
+1. [引言](http://fjdu.github.io/algorithm/2016/07/21/blockchain-1.html)
 
     1.1 什么是分布式系统？
 
     1.2 全书概览
 
-2. 容错性与 Paxos
+2. [容错性与 Paxos](http://fjdu.github.io/algorithm/2016/07/22/blockchain-2.html)
 
     2.1 客户/服务器
 
