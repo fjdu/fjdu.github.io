@@ -39,7 +39,7 @@ categories: algorithm
 
 2. [容错性与 Paxos](http://fjdu.github.io/algorithm/2016/07/22/blockchain-2.html)
 
-    2.1 客户/服务器
+    2.1 客户端/服务器
 
     2.2 Paxos
 
