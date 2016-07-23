@@ -174,8 +174,8 @@ pre,
 code {
     font-size: 15px;
     border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    background-color: #eef;
+    border-radius: 5px;
+    background-color: #eee;
 }
 
 code {
@@ -187,9 +187,12 @@ pre {
     overflow-x: scroll;
 
     > code {
-        border: 0;
+        border: 10px;
         padding-right: 0;
         padding-left: 0;
+        white-space: pre;
+        margin-top: -1em;
+        display: block;
     }
 }
 
