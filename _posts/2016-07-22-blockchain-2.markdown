@@ -25,7 +25,7 @@ categories: algorithm
 
 <p>
 <hr>
-<b>算法 2.3</b>  朴素客户/服务器算法</b>
+<b>算法 2.3</b>  朴素客户/服务器算法
 <pre><code>
 1: 客户每次向服务器发送一个命令
 </code></pre>
