@@ -15,3 +15,5 @@ markdown: kramdown
 #  extensions: ["tables", "fenced_code_blocks"]
 
 excerpt_separator: ""
+
+#paginate: 20
