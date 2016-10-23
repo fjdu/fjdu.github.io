@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Hopcroft: Foundations of Data Science, Chapter 4, 奇异值分解"
+title:  "Hopcroft 《数据科学基础》第四章：奇异值分解"
 date:   2016-05-06 Fri 04:10:18
 categories: data science
 ---

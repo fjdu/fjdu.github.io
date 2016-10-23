@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Hopcroft: Foundations of Data Science, Chapter 2"
+title:  "Hopcroft 《数据科学基础》第二章：高维空间"
 date:   2016-02-13 Sat 22:18:30
 categories: data science
 ---

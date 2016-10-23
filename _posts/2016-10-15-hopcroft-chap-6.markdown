@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Hopcroft: Foundations of Data Science, Chapter 6, 学习，以及 VC 维数"
+title:  "Hopcroft 《数据科学基础》第六章：学习，以及 VC 维数"
 date:   2016-10-15 Sat 15:34:16
 categories: data science
 ---
@@ -13,9 +13,15 @@ categories: data science
 \newcommand\argmin{\mathop{\mathrm{arg\,min}}}
 \newcommand\def[1]{定义\ {#1}\ }
 \newcommand\theorem[1]{定理\ {#1}\ }
+\newcommand\lemma[1]{引理\ {#1}\ }
 \newcommand\froben[1]{\left\lVert{#1}\right\rVert_\text{F}}
-\newcommand\twonorm[1]{\left\lVert{#1}\right\rVert_\text{2}}
+\newcommand\normtwo[1]{\left\lVert{#1}\right\rVert^\text{2}}
 \newcommand\norm[1]{\left|{#1}\right|}
+\newcommand\varphI{\V{\varphi}}
+\newcommand\xx{\V{x}}
+\newcommand\aa{\V{a}}
+\newcommand\vv{\V{v}}
+\newcommand\ww{\V{w}}
 \)
 </p>
 
@@ -145,7 +151,7 @@ categories: data science
 \begin{equation}
     \min \norm{\V{v}}\ \text{subject to}\ l_i(\V{v}^\trsps\V{a}_i) \ge 1, \forall i.
 \end{equation}
-尽管 \(\norm{\V{v}}\) 是 \(\V{v}\) 的坐标的凸函数，最好还是对 \(\norm{\V{v}}^2\) 进行优化，因为后者可微。于是我们可以把问题重新表述为:
+尽管 \(\norm{\V{v}}\) 是 \(\V{v}\) 的坐标的凸函数，最好还是对 \(\norm{\V{v}}^2\) 进行优化，因为后者可微。于是我们可以把问题重新表述为
 </p>
 
 <h3>最大边际问题：</h3>
@@ -161,7 +167,7 @@ categories: data science
 对某些线性分离器而言有可能少部分样本被错误分类。回到起初的定义，我们可以问，是否存在 \(\V{w}\) 使得至少那 \(n\) 个不等式里的 \((1-\epsilon)n\) 都被满足。可惜，这个问题是 NP 困难的，并且没有好的算法来解决。思考这件事的一个好办法是，对于每个错误归类的样本，我们承受一份损失，而我们希望最小化这个损失。但这个损失函数不是连续的，而是从 0 到 1 的突跳。但是，借助一个更好的损失函数可以解决这个问题。一个可能性是引入松弛变量 \(y_i\,\ i=1,2,\ldots,n\)，这里 \(y_i\) 衡量样本 \(\V{a}_i\) 被错误划分的程度。然后我们把松弛变量加入目标函数
 \begin{equation}
 \begin{split}
-    &\min\ \twonorm{\V{v}} + c\sum_{i=1}^n y_i \\
+    &\min\ \normtwo{\V{v}} + c\sum_{i=1}^n y_i \\
     &\text{subject to}\ 
     \left.
     \begin{array}{l}
@@ -173,7 +179,7 @@ categories: data science
 \end{equation}
 如何设置 \(y_i\)? 可以采用 \(y_i = \max(0, 1-l_i(\V{v}^\trsps\V{a}_i))\)，这样 \(y_i\) 相当于对不等式违背的程度。因此，目标函数试图最小化总的违背程度以及边际的倒数的组合。容易看出，这等价于在相同的约束下最小化
 \begin{equation}
-\twonorm{\V{v}} + c\sum_{i} \left(1-l_i(\V{v}^\trsps\V{a}_i)\right)^+,
+\normtwo{\V{v}} + c\sum_{i} \left(1-l_i(\V{v}^\trsps\V{a}_i)\right)^+,
 \end{equation}
 其中第二项是违背程度之和。
 </p>
@@ -184,8 +190,112 @@ categories: data science
 </p>
 
 <p>
+若我们知道存在次数至多为 \(D\) 的多项式 \(p\) 使得一个样本 \(\V{a}\) 当且仅当 \(p(\V{a})>0\) 时被标记为 \(+1\)，则问题变成，如何寻找这样的多项式。注意到，任何 \(d\) 元整数组 \((i_1,i_2,\ldots,i_d)\) 只要满足 \(i_1+i_2+\cdots+i_d\le D\) 都决定了一个单项式 \(x_1^{i_1}x_2^{i_2}\cdots x_d^{i_d}\)。所以，多项式 \(p\) 中的单项式个数至多为把 \(d-1\) 个分隔物放入 \(D+d-1\) 个位置中的方法数，而答案是 \(\binom{D+d-1}{d-1}\le (D+d-1)^{d-1}\) (译者注：由于 \(\le\) 的存在，貌似正确答案应该是 \(\sum_{k=0}^D\binom{k+d-1}{d-1}\))。令 \(m=(D+d-1)^{d-1}\) 表示多项式个数的上限。
 </p>
 
+<p>
+通过把单项式的系数看成未知数，我们可以构造一个 \(m\) 个变量的线性规划问题，对应的解给出要求的单项式。事实上，假定多项式为
+\begin{equation}
+    p(x_1,x_2,\ldots,x_d) = \sum_{\substack{i_1,i_2,\ldots,i_d\\ i_1+i_2+\cdots+i_d\le D}} w_{i_1,i_2,\ldots,i_d}x_1^{i_1}x_2^{i_2}\cdots x_d^{i_d},
+\end{equation}
+则不等式 \(p(\V{a}_i)>0\) 只是一个关于 \(w_{i_1,i_2,\ldots,i_d}\) 的线性不等式。但是，指数量级的变量个数使得即便在 \(D\) 不大的情形都失去实用价值。无论如何，这个方法理论上有些用处，它相当于把 \(d\) 维空间的样本点嵌入到 \(m\) 维空间了，使得对每个其和至多为 \(D\) 的 \((i_1,i_2,\ldots,i_d)\) 组合，都对应一个坐标，除了 \((0,0,\ldots,0)\) 之外；相应的坐标是 \(x_1^{i_1}x_2^{i_2}\cdot x_d^{i_d}\)。把这个嵌入称为 \(\varphI(\xx)\)。当 \(d=D=2\)，\(\varphI(\xx) = (x_1, x_2, x_1^2, x_2^2, x_1x_2)\)。我们需要找到 \(m\) 维矢量 \(\ww\) 使得 \(\ww\) 与 \(\varphI(\aa_i)\) 的内积当标签为 \(+1\) 时为正，标签为 \(-1\) 时为负。注意到，\(\ww\) 未必可以表达为 \(d\) 维空间某向量的 \(\varphI\) 嵌入。
+</p>
+
+<p>
+与其寻找一个普通的 \(\ww\)，我们要寻找最大化边际的 \(\ww\)。相应的规划问题可以写为
+\begin{equation}
+    \min\ \normtwo{\ww}\ \text{subject to}\  \left(\ww^\trsps\varphI(\aa_i)\right)l_i \ge 1,\ \text{for all}\ i.
+\end{equation}
+主要的问题是，我们能否避免显式计算嵌入 \(\varphI\) 和矢量 \(\ww\)。实际上我们只需要隐式使用它们。这是基于一个简单但关键的观察，那就是，上述凸规划问题的任何最优解 \(\ww\) 都是 \(\varphI(\aa_i)\) 的线性组合。如果 \(\ww = \sum_i y_i\varphI(\aa_i)\)，那么 \(\ww^\trsps \varphI(\aa_j)\) 可以在不知道 \(\varphI(\aa_i)\) 而只知道 \(\varphI(\aa_i)^\trsps\varphI(\aa_j)\) 的情况下计算出。
+</p>
+
+<p>
+\(\lemma{6.2}\) 上述凸规划的任意最优解 \(\ww\) 都是 \(\varphI(\aa_i)\) 的线性组合。
+</p>
+
+<p>
+证明：否则的话，\(\ww\) 有垂直于所有 \(\varphI(\aa_i)\) 的分量。去掉这个分量不会影响不等式的成立，但会减小 \(\normtwo{\ww}\)，与最优性矛盾。证毕。
+</p>
+
+<p>
+现在，令 \(\ww = \sum_i y_i \varphI(\aa_i)\)，这里 \(y_i\) 都是实数。注意到
+\begin{equation}
+    \normtwo{\ww} = \sum_{i,j}y_iy_j\varphI(\aa_i)^\trsps\varphI(\aa_j),
+\end{equation}
+于是凸规划可以重新表述为
+\begin{equation}
+\begin{split}
+    &\min\ \sum_{i,j}y_iy_j\varphI(\aa_i)^\trsps\varphI(\aa_j), \\
+    &\text{subject to}\ l_i\left(\sum_j y_j\varphI(\aa_j)^\trsps\varphI(\aa_i)\right) \ge 1\ \forall i.
+\end{split}
+\end{equation}
+重要的是注意到 \(\varphI\) 本身是不需要的，只需要 \(\varphI(\aa_i)\) 之间的内积。核矩阵 \(K\) 定义为
+\begin{equation}
+    k_{ij} = \varphI(\aa_i)^\trsps\varphI(\aa_j).
+\end{equation}
+于是凸规划问题可以写为
+\begin{equation}
+    \min\ \sum_{i,j} y_iy_j k_{ij}\ \text{subject to}\ l_i\sum_j k_{ij}y_j \ge 1.
+\end{equation}
+这个凸规划被称为<b>支持向量机</b> (support vector machine; SVM)，尽管它并不是什么机器。\(K\) 的优势在于，它只有 \(n^2\) 个数，而不是 \(O(d^D)\) 个。我们不需要通过 \(\aa_i\) 计算 \(\varphI(\aa_i)\)，而只需要知道如何从 \(\aa_i\) 得到 \(K\)。相应的计算通常用封闭形式给出。比如，“高斯核”由下面式子给出
+\begin{equation}
+    k_{ij} = e^{-c\norm{\aa_i-\aa_j}}.
+\end{equation}
+稍后我们证明这的确是个核函数。
+</p>
+
+<p>
+首先面临的问题是，给定一个矩阵 \(K\)，比如上面那个高斯核，我们怎么知道它是来自通过嵌入 \(\varphI\) 的两两内积得到的？这通过下面的引理给出。
+</p>
+
+<p>
+\(\lemma{6.3}\) \(K\) 是一个核矩阵当且仅当它是个半正定矩阵。
+</p>
+
+<p>
+证明：若 \(K\) 是半正定矩阵，则可表示为 \(K = B B^\trsps\)。定义 \(\varphI(\aa_i)\) 为 \(B\) 的第 \(i\) 行，则 \(k_{ij} = \varphI(\aa_i)^\trsps\varphI(\aa_j)\)。反过来也是明显的。证毕。
+</p>
+
+<p>
+注意到，函数 \(\sum_{i,j} y_iy_j k_{ij} = y^\trsps K y\) 当且仅当 \(K\) 为半正定时是凸函数。于是支持向量机问题是凸规划问题。可以使用任何半正定矩阵作为核矩阵。
+</p>
+
+<p>
+这里给出一个核矩阵的重要例子。定义 \(k_{ij} = (\aa_i^\trsps\aa_j)^p\)，这里 \(p\) 是个正整数。通过直接计算可知 \(K\) 是正定矩阵。
+</p>
+
+<p>
+由此得知，对于矢量集合 \(\aa_1, \aa_2,\ldots,\aa_n\)，以及任何非负常数 \(c_1,c_2,\ldots\)，拥有绝对收敛级数展开的矩阵 \(k_{ij} = \sum_{p=0}^\infty c_p\left(\aa_i^\trsps\aa_j\right)^p\) 是正定矩阵。
+</p>
+
+<p>
+\(\lemma{6.4}\) 对于矢量集合 \(\aa_1, \aa_2,\ldots,\aa_n\)，由 \(k_{ij} = e^{-\normtwo{\aa_i-\aa_j}/(2\sigma^2)}\) 给出的矩阵对于任何 \(\sigma\) 是半正定的。
+</p>
+
+<p>
+证明：\(e^{-\normtwo{\aa_i-\aa_j}/(2\sigma^2)} = e^{-\normtwo{\aa_i}/2\sigma^2}e^{-\normtwo{\aa_j}/2\sigma^2} e^{\aa_i^\trsps\aa_j/\sigma^2} = e^{-\normtwo{\aa_i}/2\sigma^2}e^{-\normtwo{\aa_j}/2\sigma^2} \sum_{t=0}^\infty \left(\frac{(\aa_i^\trsps\aa_j)^t}{t! \sigma^{2t}}\right).\)  矩阵 \(l_{ij} = \sum_{t=0}^\infty \left(\frac{(\aa_i^\trsps\aa_j)^t}{t! \sigma^{2t}}\right)\) 是半正定的，所以 \(K\) 也是。
+</p>
+
+<p>
+<b>例子：(高斯核的应用)</b> 考虑下述情形：样本位于平面上两条互相缠绕的曲线上，一条对应的标签是 \(+1\)，另一条对应 \(-1\)。假设样本在每条曲线上的间隔为 \(\delta\)，而两条曲线之间的最小距离是 \(\Delta \gg \delta\)。很明显，不存在一条直线能区分这两类。由于两条曲线互相缠绕，直觉上任何能区分两者的多项式必定次数很高。考虑高斯核。对于同一条曲线上的点，相邻点对应 \(k_{ij}\approx 1\)，而对其它点 \(k_{ij}\approx 0\)。对样本点重新排序，第一条曲线的在前面，第二条的在后面，则 \(K\) 具有块对角形式
+\[
+K = \left(\begin{array}{cc} K_1 & 0 \\ 0 & K_2\end{array}\right),
+\]
+并且对角元素为 1，然后随着与对角线的距离指数衰减为 0。
+</p>
+
+<p>
+这个 SVM 实质上具有下述形式
+\begin{equation}
+\begin{split}
+    &\min\ \V{y}_1^\trsps K_1 \V{y}_1 + \V{y}_2^\trsps K_2 \V{y}_2\\
+    &\text{subject to}\ K_1\V{y}_1 \ge 1\ \text{and}\ K_2\V{y}_2 \le -1.
+\end{split}
+\end{equation}
+这样就分成了两个规划问题，一个针对 \(\V{y}_1\)，一个针对 \(\V{y}_2\)。从 \(K_1=K_2\) 可知，\(\V{y}_2 = \V{y}_2\)。进一步，由于每条曲线的结构除了尾端之外基本没什么变化，\(\V{y}_1\) 的各分量的取值会近乎相等，而\(\V{y}_2\) 也一样。所以，\(\V{y}_1\) 的分量全是 \(1\)，而 \(\V{y}_2\) 的分量全是 \(-1\)。令 \(l_i=\pm1\) 为标签，则 \(y_i\) 的值提供了一个很好的简单分类器，也就是 \(l_iy_i>1\)。
+</p>
+
+<h2>6.4 强弱学习 － Boosting</h2>
 <p>
 </p>
 
