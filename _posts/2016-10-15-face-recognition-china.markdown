@@ -63,6 +63,12 @@ categories: FaceRecognition
     - 应用
         - 人脸美化、人脸识别和认证、大规模人脸检索、照片管理
 
+5. 微软
+    - 网站：[https://www.microsoft.com/cognitive-services/en-us/face-api](https://www.microsoft.com/cognitive-services/en-us/face-api)
+        - 免费版每个月三万次调用
+    - 技术
+        - 人脸探测，寻找相似脸，人脸分类，人脸识别
+
 6. 科大讯飞
     - 网站：[http://www.xfyun.cn/services/face?type=face](http://www.xfyun.cn/services/face?type=face)
     - 技术
@@ -92,8 +98,12 @@ categories: FaceRecognition
 
 6. 自己做
     - 有许多开源框架可用
-    - 基于深度学习的算法需要较高的硬件支持 (主要是显卡 GPU)
+    - 基于深度学习的算法
+        - 需要较高的硬件支持 (主要是显卡 GPU)
         - DEEPID: [https://github.com/hqli/face_recognition](https://github.com/hqli/face_recognition)
     - GaussianFace: [https://arxiv.org/abs/1404.3840](https://arxiv.org/abs/1404.3840)
-    - 基于 PCA
+    - 基于 PCA (主成分分析) 方法
         - OpenCV: [http://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html](http://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html)
+        - 实现容易
+    - 其它各种算法...
+
