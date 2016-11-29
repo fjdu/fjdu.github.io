@@ -18,3 +18,14 @@ os.urandom(10)
 {% endhighlight %}
 
 # 使用 inspect 获得模块/函数/对象的一些信息 (比如源文件内容)
+
+# 安装 dlib 时遇到的一些问题
+
+`import dlib` 时提示加载 `libpng` 以及 `libmkl_rt` 的动态链接库出错。
+
+解决办法简单而坑爹：
+
+`export DYLD_LIBRARY_PATH="~/anaconda/envs/opencv/lib:~/anaconda/lib"`
+
+要在 `ipython` 下正确使用，需要在 `~/anaconda/envs/opencv/lib` 目录下建立一个软链接：`"libmkl_rt.dylib" -> "../../../lib/libmkl_rt.dylib"`
+
