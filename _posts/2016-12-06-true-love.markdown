@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "找到真爱的几率是 37%?"
+title:  "找到真爱的几率是百分之三十七?"
 date:   2016-12-06 Tue 22:51:01
 categories: math
 ---
