@@ -43,3 +43,5 @@ end with
 使用 Google 时建议使用这个网址：[https://www.google.com/ncr](https://www.google.com/ncr)
 
 如果觉得不好使了，尝试再次双击运行这个程序即可。
+
+<img src="{{ site.url }}/pictures/2016-12-07-ladder.jpg" id="Ladder" style="display: none;">
