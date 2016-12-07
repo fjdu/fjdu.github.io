@@ -43,7 +43,7 @@ categories: math
     &= \frac{k}{N} \left[\frac{1}{k} + \frac{1}{k+1} + \frac{1}{k+2} + \cdots + \frac{1}{N-1}\right].
 \end{split}
 \]
-上面方括号里的东西，可以通过下面的级数求和公式得到近似值
+上面方括号里的东西，可以通过下面的级数求和公式 (这个叫调和级数) 得到近似值
 \[
     1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{N} \approx \ln N + \gamma,
 \]
