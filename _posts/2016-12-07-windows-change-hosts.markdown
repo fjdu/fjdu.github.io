@@ -40,7 +40,7 @@ end with
 
 然后，把文件的后缀名从本来的 `txt` 改为 `vbs`。然后双击运行，会提示是否允许运行；点击允许；稍等一会儿 (几秒到十几秒的样子)，应该就可以翻墙了。
 
-这种方法可以让你顺利使用 Google (包括 Gmail, Google Drive), Facebook, Twitter, Dropbox 等网站。Google 偶尔可能需要输入验证码，照做就好。
+这种方法可以让你顺利使用 Google (包括 Gmail, Google Drive), Facebook, Twitter, Dropbox 等网站。Google 偶尔可能需要输入验证码 (或者让你验证自己不是机器人)，照做就好。
 
 使用 Google 时建议使用这个网址：[https://www.google.com/ncr](https://www.google.com/ncr)
 
@@ -50,11 +50,11 @@ end with
 
 在终端执行下面的命令即可：
 {% highlight bash %}
-wget -O /etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+sudo wget -O /etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
 {% endhighlight %}
 如果出现问题，可尝试
 {% highlight bash %}
-sudo wget -O /etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+sudo curl -o /etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
 {% endhighlight %}
 后一种情况需要输入密码。
 
