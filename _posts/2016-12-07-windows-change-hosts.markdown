@@ -48,7 +48,7 @@ end with
 
 # Mac 系统
 
-在终端执行下面的命令即可：
+在终端执行下面的命令即可 (需要输入密码)：
 {% highlight bash %}
 sudo wget -O /etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
 {% endhighlight %}
@@ -56,7 +56,6 @@ sudo wget -O /etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/h
 {% highlight bash %}
 sudo curl -o /etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
 {% endhighlight %}
-后一种情况需要输入密码。
 
 <img src="{{ site.url }}/pictures/2016-12-07-ladder.jpg" id="Ladder">
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=447079351&auto=1&height=66"></iframe>
