@@ -2,7 +2,7 @@
 layout: post
 title:  "What is photophoretic force, and its effect on planet formation"
 date:   2015-04-02 Thu 10:41:45
-categories: astrophysics, planet
+categories: astrophysics
 ---
 
 <div>

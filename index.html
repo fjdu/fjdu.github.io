@@ -3,22 +3,35 @@ layout: default
 ---
 
 <div class="home">
+<!-- This loops through the paginated posts -->
+<ul class="post-list">
+{% for post in paginator.posts %}
+  <li>
+  <span class="post-meta">{{ post.date | date: "%Y-%m-%d %H:%M:%S" }}</span>
+  <h2><a href="{{ post.url }}" class="post-link">{{ post.title }}</a></h2>
+  </li>
+{% endfor %}
+</ul>
 
-  <h1 class="page-heading">Posts</h1>
+<!-- Pagination links -->
+<div class="pagination">
+  <a href="/index.html" class="first">1</a>
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">&lt;&lt;</a>
+  {% else %}
+    <span class="previous">&lt;&lt;</span>
+  {% endif %}
+  <span class="page_number ">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">&gt;&gt;</a>
+  {% else %}
+    <span class="next">&gt;&gt;</span>
+  {% endif %}
+  <a href="/blog/page{{ paginator.total_pages }}" class="last">{{ paginator.total_pages }}</a>
+</div>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+<br>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-      
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

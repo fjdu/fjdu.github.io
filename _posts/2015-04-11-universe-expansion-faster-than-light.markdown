@@ -2,7 +2,7 @@
 layout: post
 title:  "Can distant galaxies move away from us faster than the speed of light?"
 date:   2015-04-11 Sat 12:54:57
-categories: physics, cosmology
+categories: physics
 ---
 
 <div>

@@ -2,7 +2,7 @@
 layout: post
 title:  "The difference between 2D and 3D Navier-Stokes equations"
 date:   2015-09-06 Sun 09:29:09
-categories: physics, math, fluid mechanics
+categories: physics
 ---
 
 From: [https://www.youtube.com/watch?v=DgmuGqeRTto](https://www.youtube.com/watch?v=DgmuGqeRTto)
