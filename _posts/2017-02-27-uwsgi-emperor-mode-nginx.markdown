@@ -81,6 +81,6 @@ categories: coding
     touch /opt/uwsgi_config/uwsgi_*.yaml
 {% endhighlight %}
 
-6\. `nginx` 的配置文件位于 `/usr/local/etc/nginx`, 启动 `nginx` 需要 `sudo`；重启 `nginx` 的命令是 `sudo nginx -s reload`；停止 `nginx` 的命令是 `sudo nginx -s stop`；需要注意 `user` 的设置。
+6\. `macOS` 上 `nginx` 的配置文件位于 `/usr/local/etc/nginx`, 启动 `nginx` 需要 `sudo`；重启 `nginx` 的命令是 `sudo nginx -s reload`；停止 `nginx` 的命令是 `sudo nginx -s stop`；需要注意 `user` 的设置。
 
 7\. 注意，在 `Flask` 中使用 `MongoDB` 时，不能使用全局 `mongo_client`，而必须在每个函数内单独开启 `mongoDB` 连接，否则会出错，因为 `mongoDB` 不是线程安全的。
