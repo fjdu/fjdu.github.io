@@ -27,7 +27,7 @@ categories: coding
         master: 1
         workers: 4
         threads: 1
-        chdir: /data/www/A.com
+        chdir: /data/www/A
 {% endhighlight %}
 
 {% highlight sh %}
@@ -44,7 +44,7 @@ categories: coding
         master: 1
         workers: 8
         threads: 1
-        chdir: /data/www/B.com
+        chdir: /data/www/B
 {% endhighlight %}
 
 3\. 启动 `uwsgi`
