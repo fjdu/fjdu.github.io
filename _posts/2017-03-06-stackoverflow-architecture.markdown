@@ -63,7 +63,7 @@ categories: coding
 <img src="https://i.imgur.com/TEb0jiPh.jpg" width='300px'><img src="https://i.imgur.com/ZFvRqgkh.jpg" width='300px'>
 </p>
 <p><b>架构图</b><br>
-<img src="https://nickcraver.com/blog/content/SO-Architecture-Overview-Logical.svg" width='600px'></img>
+<img src="https://nickcraver.com/blog/content/SO-Architecture-Overview-Logical.svg" width='600px'>
 </p>
 <p><b>基本原则</b><br>
 <ul>
