@@ -60,7 +60,7 @@ categories: coding
 最少需要几台服务器能跑 Stack Overflow? 自 2013 年以来变化不大。但由于硬件和软件的优化，最少一台就够了。我们曾经无意中测试过这个，并且不止一次。注意：我只是说这是可行的，没说这么做是对的，虽说每次都挺好玩。
 
 <p><b>硬件外观</b><br>
-<img src="https://i.imgur.com/TEb0jiPh.jpg" width='300px'></img><img src="https://i.imgur.com/ZFvRqgkh.jpg" width='300px'></img>
+<img src="https://i.imgur.com/TEb0jiPh.jpg" width='300px'><img src="https://i.imgur.com/ZFvRqgkh.jpg" width='300px'>
 </p>
 <p><b>架构图</b><br>
 <img src="https://nickcraver.com/blog/content/SO-Architecture-Overview-Logical.svg" width='600px'></img>
