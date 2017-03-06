@@ -110,4 +110,8 @@ Redis 也用于发布和订阅，还用于 Websockets；文件句柄不够的问
 
 # 硬件 - 2016 版
 
+[来源](https://nickcraver.com/blog/2016/03/29/stack-overflow-the-hardware-2016-edition/)
+
 # 部署 - 2016 版
+
+[来源](https://nickcraver.com/blog/2016/05/03/stack-overflow-how-we-do-deployment-2016-edition/)
