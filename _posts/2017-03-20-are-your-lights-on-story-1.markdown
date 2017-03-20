@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "一个关于电梯的故事"
+title:  "一个与电梯有关的故事"
 date:   2017-03-20 Mon 12:29:27
 categories: story
 ---
