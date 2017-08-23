@@ -5,7 +5,7 @@ date:   2016-10-15 Sat 15:34:16
 categories: data science
 ---
 
-<p>
+<p hidden>
 \(
 \newcommand\trsps{\mathsf{T}}
 \newcommand\V[1]{\mathbf{#1}}
