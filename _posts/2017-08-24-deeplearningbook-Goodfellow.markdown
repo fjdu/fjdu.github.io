@@ -148,6 +148,14 @@ categories: math
   </li>
   <li>
     冲量
+    <ul>
+      <li>
+        计算梯度 \(g\)，更新速度 \(v \leftarrow \alpha v - \epsilon g\)
+      </li>
+      <li>
+        \(\theta \leftarrow \theta + v\)
+      </li>
+    </ul>
   </li>
   <li>
     Nesterov 冲量
@@ -175,6 +183,9 @@ categories: math
 <ul>
   <li>
     牛顿法
+    \[
+      \theta^\ast = \theta_0 - H^{-1} \nabla_\theta J(\theta_0)
+    \]
   </li>
   <li>
     共轭梯度法
@@ -184,12 +195,56 @@ categories: math
       </li>
       <li>
         后一步的搜索方向必定垂直于前一步的搜索方向:
-        令前一步搜索方向为 \(d_{t-1}\)。在极小值处，沿着这个方向的导数是 0: \(\nabla_\theta J(\theta) \cdot d_{t-1} = 0\)，而下一步的方向是 \(\nabla_\theta J(\theta)\)，故如此。之字形搜索路线的效率不高。
+        最陡下降法中，令前一步搜索方向为 \(d_{t-1}\)，在极小值处，沿着这个方向的导数是 0: \(\nabla_\theta J(\theta) \cdot d_{t-1} = 0\)，而下一步的方向是 \(\nabla_\theta J(\theta)\)，故如此。之字形搜索路线的效率不高。
+      </li>
+      <li>
+        令 \(d_t = \nabla_\theta J(\theta) + \beta_t d_{t-1}\)，就是共轭梯度法。\(\beta_t\) 控制上一个方向对下一个方向的贡献比例。
+      </li>
+      <li>
+        如果 \(d_t^\trsps H d_{t-1} = 0\)，则称两个方向是共轭的。令 \(g_t = \nabla_\theta J(\theta_t)\)，有两种常见的计算 \(\beta_t\) 的方法
+        <ol>
+          <li> Fletcher-Reeves
+            \[
+              \beta_t = \frac{g_t^\trsps g_t}{g_{t-1}^\trsps g_{t-1}}
+            \]
+          </li>
+          <li> Polak-Ribière
+            \[
+              \beta_t = \frac{(g_t - g_{t-1})^\trsps g_t}{g_{t-1}^\trsps g_{t-1}}
+            \]
+          </li>
+        </ol>
+      </li>
+      <li>
+        对于二次曲面，共轭方向保证了沿着之前方向的梯度不增加
+      </li>
+      <li>
+        对于 k 维参数空间，只需要最多 k 次线搜索就可以到达最小值。
+      </li>
+      <li>
+        非线性共轭梯度法: 在共轭梯度的基础上，偶尔进行普通的最陡梯度下降
       </li>
     </ul>
   </li>
   <li>
     BFGS (Broyden–Fletcher–Goldfarb–Shanno)
+    <ul>
+      <li>
+        牛顿法的难点在于求 Hessian 矩阵的逆；准牛顿方法用近似方法来求逆；BFGS 方法就是一种准牛顿法。
+      </li>
+      <li>
+        通过迭代求得 \(H^{-1}\) 的近似 \(M_t\)，由此得到搜索方向 \(\rho_t = M_t g_t\)，然后通过线搜索得到步长。
+      </li>
+      <li>
+        对线搜索的精度要求不高
+      </li>
+      <li>
+        需要存储 Hessian 矩阵的逆，对于大模型做不到
+      </li>
+      <li>
+        Limited memory BFGS: 不保存上一步的 \(H^{-1}\)，而假定它是单位矩阵；或者保存其一部分，存储占用为 \(O(n)\)。
+      </li>
+    </ul>
   </li>
 </ul>
 
