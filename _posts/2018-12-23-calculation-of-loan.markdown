@@ -25,6 +25,12 @@ categories: math
 \[r_{i} = r_{i-1} (1 + x) - a_{i}.\]
 </p>
 
+<p>
+记定期存款的利率为\(w\)，则由于还贷导致的定期存款减少量为
+\[D = a_1 (1+w)^{n-1} + a_2 (1+w)^{n-2} + \cdots + a_n,\]
+这应该被看成贷款的真实成本。
+</p>
+
 # 等额本息还款
 
 <p>
@@ -32,6 +38,10 @@ categories: math
 \[r_{i+1} - \frac{a}{x} = (1+x)^{i+1} \left(r_0 - \frac{a}{x}\right).\]
 结合\(r_0=A\), \(r_n = 0\), 得到
 \[a = \frac{x \cdot A}{1 - \left(1+x\right)^{-n}}.\]
+还款总额是
+\[S = na = \frac{n x \cdot A}{1 - \left(1+x\right)^{-n}}.\]
+减少的定期存款为
+\[D = a\cdot \frac{(1+w)^n - 1}{w}.\]
 </p>
 
 <p>
@@ -52,5 +62,10 @@ categories: math
 </p>
 
 <p>
-第一次还款额是\(a_1 = b\cdot (1+nx)\)，最后一次还款额是\(a_n = b\cdot (1+x)\)。
+第一次还款额是\(a_1 = b\cdot (1+nx)\)，最后一次还款额是\(a_n = b\cdot (1+x)\)，总还款额是
+\[T = A \cdot \left[1 + \frac{(n-1)x}{2}\right],\]
+总真实成本是
+\[D = b(1+x)\cdot \frac{(1+w)^n - 1}{w} + b x \frac{1+w}{w^2} \left[(n-1)(1+w)^n - n (1+w)^{n-1} + 1\right].\]
+上面用到了求和式
+\[\sum_{i=1}^{n-1} i a^i = \frac{a}{(a-1)^2} \left[(n-1)a^n - n a^{n-1} + 1\right].\]
 </p>
