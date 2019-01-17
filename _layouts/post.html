@@ -10,6 +10,19 @@ MathJax.Hub.Config({
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"> </script>
 
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'fjdu',
+  repo: 'fjdu.github.io',
+  oauth: {
+    client_id: 'a6c3c265e2d16c71ef47',
+    client_secret: '40bc147ccb877da2a0070e67ddd544e66cba4fb8',
+  },
+})
+gitment.render('container')
+</script>
+
 <div class="post">
 
   <header class="post-header">

@@ -19,3 +19,8 @@ excerpt_separator: ""
 plugins: [jekyll-paginate]
 paginate: 25
 paginate_path: "/blog/page:num/"
+
+# Gitment
+gitment:
+  id: a6c3c265e2d16c71ef47
+  secret: 40bc147ccb877da2a0070e67ddd544e66cba4fb8
