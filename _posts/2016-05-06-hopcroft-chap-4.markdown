@@ -7,7 +7,7 @@ categories: data science
 
 <h1>Singular Value Decomposition: SVD, 奇异值分解</h1>
 
-<p>
+<p hidden>
 \(
 \newcommand\trsps{\mathsf{T}}
 \newcommand\V[1]{\mathbf{#1}}
