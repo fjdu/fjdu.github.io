@@ -261,7 +261,8 @@ categories: data science
 <p>
 \(\theorem{4.10}\) (本征值和本征矢量的类比)
 \[A\V{v}_i = \sigma_i \V{u}_i\ \text{and}\ A^\trsps \V{u}_i = \sigma_i \V{v}_i.\]
-第一个等式从左奇异矢量的定义得到 (方程(\ref{eqLeftSingularVectorDef}))。对于第二个等式，注意到从SVD得到\[A^\trsps \V{u}_i = \sum_j\sigma_j\V{v}_j\V{u}_j^\trsps\V{u}_i\]，结合 \(\V{u}_j\)的正交归一性即得。
+第一个等式从左奇异矢量的定义得到 (方程(\ref{eqLeftSingularVectorDef}))。对于第二个等式，注意到从SVD得到\[A^\trsps \V{u}_i = \sum_j\sigma_j\V{v}_j\V{u}_j^\trsps\V{u}_i,\]
+结合 \(\V{u}_j\)的正交归一性即得。
 </p>
 
 <h2>计算奇异值分解的幂方法</h2>
@@ -307,7 +308,7 @@ categories: data science
 </p>
 
 <p>
-引理：令 \((x_1,\ x_2,\ \ldots,\ x_d)\) 是一个 \(d\) 维随机单位矢量。那么 \(\norm{x_1} \ge \frac{1}{20\sqrt{d}}\) 的几率至少是 \(9/10\)。
+<b>引理</b>：令 \((x_1,\ x_2,\ \ldots,\ x_d)\) 是一个 \(d\) 维随机单位矢量。那么 \(\norm{x_1} \ge \frac{1}{20\sqrt{d}}\) 的几率至少是 \(9/10\)。
 </p>
 
 <p>
