@@ -27,6 +27,6 @@ categories: math
 
 Morin 在一系列短文中描述了他的方法 (Morin and Petit 1978a, 1978b, 1978c, 1980)。其中一篇短文给出了可用于计算机渲染的代数方程。
 
-Morin 也发现了在任何翻转方法中都不可避免的某些“事件”的种类和次数。与 François Apéry 一起他发明了一种代数-分析翻转法，实用了最少的事件数 (Apéry 1992)。他也做了一些多面体的实现，把包含 20 个三角形的“球面”翻转 (Morin 1995)。Richard Denner 基于此制作的模型在巴黎的 Palais de la Découverte 展出。
+Morin 也发现了在任何翻转方法中都不可避免的某些“事件”的种类和次数。与 François Apéry 一起他发明了一种代数-分析翻转法，使用了最少的事件数 (Apéry 1992)。他也做了一些多面体的实现，把包含 20 个三角形的“球面”翻转 (Morin 1995)。Richard Denner 基于此制作的模型在巴黎的 Palais de la Découverte 展出。
 
 七十年代中期，Bill Thurston 发展了他自己的 corrugations 想法。这给出了新的翻转途径；纪录片 “Outside In”里解释了这个。
