@@ -1,6 +1,11 @@
 ---
 layout: default
+title: Blog
 ---
+
+<p>I blog about math, physics, astrophysics, computer science, machine learning, and pretty much anything that seems interesting.</p>
+<hr>
+<br>
 
 <div class="home">
 <!-- This loops through the paginated posts -->
@@ -15,7 +20,7 @@ layout: default
 
 <!-- Pagination links -->
 <div class="pagination">
-  <a href="/index.html" class="first">1</a>
+  <a href="/blog/index.html" class="first">1</a>
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path }}" class="previous">&lt;&lt;</a>
   {% else %}
