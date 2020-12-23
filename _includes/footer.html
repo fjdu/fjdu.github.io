@@ -10,6 +10,13 @@
       </div>
 
       <div class="footer-col  footer-col-2">
+
+          {% if site.orcid %}
+            <a href="https://orcid.org/{{ site.orcid }}"> <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16" />
+            </a>
+          {% endif %}
+
+
           {% if site.github_username %}
             <a href="https://github.com/{{ site.github_username }}">
               <span class="icon  icon--github">
@@ -18,7 +25,6 @@
                 </svg>
               </span>
 
-              <span class="username">{{ site.github_username }}</span>
             </a>
           {% endif %}
 
@@ -31,7 +37,6 @@
                 </svg>
               </span>
 
-              <span class="username">{{ site.twitter_username }}</span>
             </a>
           {% endif %}
       </div>
