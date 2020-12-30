@@ -6,7 +6,7 @@ layout: default
   <tr>
     <td> My name is Fujun Du.  I work on interstellar medium and protoplanetary disks.
     </td>
-    <td><img src="http://www.pmo.cas.cn/sourcedb_pmo_cas/cn/expert/201805/P020180502368483637012.jpg" alt="" width="60px">
+    <td><img src="{{ site.url }}/pictures/fjdu-photo.jpg" alt="" width="60px">
     </td>
   </tr>
   <tr> <td colspan="2"><h2>Interstellar medium</h2>
