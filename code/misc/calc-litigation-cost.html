@@ -12,14 +12,14 @@
 }
 body {
     min-height: 100vh;
-    max-width: 300px;
+    max-width: 320px;
     margin: 0 auto;
 }
 input[type='number']{
-    width: 10em;
+    width: 15ch;
 }
 input[type='textbox']{
-    width: 10em;
+    width: 15ch;
 }
 input[readonly] {
   color: blue;
@@ -30,33 +30,32 @@ input[readonly] {
 <h2>诉讼费分摊计算</h2>
 
 <div>
-<label for="claim_amount">原告请求金额</label>
+<label for="claim_amount">原告请求金额 (万元)</label>
 <input type="number" id="claim_amount"/>
 <br>
-<label for="litig_cost">该金额对应诉讼费</label>
-<input type="number" id="litig_cost"/>
-<br>
-<label for="support_amount">法院支持金额</label>
+<label for="support_amount">法院支持金额 (万元)</label>
 <input type="number" id="support_amount"/>
 </div>
 <br>
 
 <div>
-<label for="result_yg">原告应付</label>
+<label for="litig_cost">总应付诉讼费 (万元)</label>
+<input type="number" id="litig_cost" readonly/>
+<br>
+<label for="result_yg">原告应付 (万元)</label>
 <input type="textbox" id="result_yg" readonly>
 <br>
-<label for="result_bg">被告应付</label>
+<label for="result_bg">被告应付 (万元)</label>
 <input type="textbox" id="result_bg" readonly>
 </div>
 
 <script>
 document.getElementById("claim_amount").addEventListener('keyup', calc);
-document.getElementById("litig_cost").addEventListener('keyup', calc);
 document.getElementById("support_amount").addEventListener('keyup', calc);
 
 function calc() {
     var claim_amount = document.getElementById("claim_amount").valueAsNumber;
-    var litig_cost = document.getElementById("litig_cost").valueAsNumber;
+    var litig_cost = calc_total_fee(claim_amount, partition_points, rates, base_val);
     var support_amount = document.getElementById("support_amount").valueAsNumber;
     if (isNaN(litig_cost)) {
       litig_cost = 0.0;
@@ -71,7 +70,35 @@ function calc() {
       result_bg = litig_cost * support_amount / claim_amount;
       result_yg = litig_cost - result_bg;
     }
+    document.getElementById("litig_cost").value = litig_cost.toFixed(4);
     document.getElementById("result_yg").value = result_yg.toFixed(4);
     document.getElementById("result_bg").value = result_bg.toFixed(4);
 };
+
+partition_points = [1.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0, 1000.0, 2000.0];
+rates  = [0, 0.025, 0.02, 0.015, 0.01, 0.009, 0.008, 0.007,  0.006,  0.005];
+base_val = 0.005; // 单位是万元
+
+function getInterval(v, partition_points) {
+  for (var i=0; i<partition_points.length; ++i) {
+    if (v <= partition_points[i]) {
+      return i;
+    }
+  }
+  return i;
+}
+
+function calc_total_fee(v, partition_points, rates, base_val) {
+  var s = base_val;
+  var iInterval = getInterval(v, partition_points);
+  for (var i=1; i<iInterval; ++i) {
+    s = s + (partition_points[i] - partition_points[i-1]) * rates[i];
+  }
+  if (iInterval == 0) {
+    return s;
+  }
+  s = s + (v - partition_points[iInterval-1]) * rates[iInterval];
+  return s;
+}
+
 </script>
