@@ -72,6 +72,29 @@ table {
     width: 100%;
 }
 
+.noteTable {
+  counter-reset: rowNumber;
+}
+
+.noteTable tbody tr {
+  counter-increment: rowNumber;
+}
+
+.noteTable thead tr::before {
+  content: " ";
+}
+
+.noteTable tbody tr::before {
+  content: counter(rowNumber) ".";
+  display: table-cell;
+  padding-right: 0.3em;
+  text-align: left;
+  vertical-align: middle;
+  font-style: italic;
+  min-width: 1em;
+  background-color: white;
+}
+
 th, td {
     padding: 8px;
     text-align: left;
