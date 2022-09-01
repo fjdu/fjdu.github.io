@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<style>
+input[type='number']{
+    width: 10em;
+}
+input[type='textbox']{
+    width: 10em;
+}
+input[readonly] {
+  color: blue;
+  background-color: #dddddd;
+}
+</style>
+
+<h2>诉讼费分摊计算</h2>
+
+<div>
+<label for="claim_amount">原告请求金额</label>
+<input type="number" id="claim_amount"/>
+<label for="litig_cost">该金额对应诉讼费</label>
+<input type="number" id="litig_cost"/>
+</div>
+<br>
+
+<div>
+<label for="support_amount">法院支持金额</label>
+<input type="number" id="support_amount"/>
+</div>
+<br>
+
+<div>
+<label for="result_yg">原告应付</label>
+<input type="textbox" id="result_yg" readonly>
+
+<label for="result_bg">被告应付</label>
+<input type="textbox" id="result_bg" readonly>
+</div>
+
+<script>
+document.getElementById("claim_amount").addEventListener('keyup', calc);
+document.getElementById("litig_cost").addEventListener('keyup', calc);
+document.getElementById("support_amount").addEventListener('keyup', calc);
+
+function calc() {
+    var claim_amount = document.getElementById("claim_amount").valueAsNumber;
+    var litig_cost = document.getElementById("litig_cost").valueAsNumber;
+    var support_amount = document.getElementById("support_amount").valueAsNumber;
+    if (isNaN(litig_cost)) {
+      litig_cost = 0.0;
+    }
+    if (isNaN(support_amount)) {
+      support_amount = 0.0;
+    }
+    console.log(claim_amount, litig_cost, support_amount);
+    var result_yg = 0.0;
+    var result_bg = 0.0;
+    if ((claim_amount > 0) && (litig_cost >=0) && (support_amount >= 0)) {
+      result_bg = litig_cost * support_amount / claim_amount;
+      result_yg = litig_cost - result_bg;
+    }
+    document.getElementById("result_yg").value = result_yg.toFixed(4);
+    document.getElementById("result_bg").value = result_bg.toFixed(4);
+};
+</script>
